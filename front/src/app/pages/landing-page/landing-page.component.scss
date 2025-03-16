@@ -1,0 +1,54 @@
+.landing-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f5f5f5;
+}
+
+.logo {
+  width: 200px; /* Adjust the size of your logo */
+  height: auto;
+  margin-bottom: 30px; /* Space between logo and buttons */
+}
+
+.button-group {
+  display: flex;
+  gap: 20px;
+}
+
+button {
+  color: black;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 30px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  text-transform: none;
+  box-shadow: none;
+}
+
+/* Override default Angular Material button colors */
+button.mat-flat-button {
+  background-color: white !important;
+  color: black !important;
+  border: 1px solid black !important;
+}
+
+button.mat-flat-button:hover {
+  background-color: #f0f0f0; /* Light hover effect */
+}
+
+button.mat-raised-button {
+  background-color: white !important;
+  color: black !important;
+  border: 1px solid black !important;
+}
+
+button.mat-raised-button:hover {
+  background-color: #f0f0f0; /* Light hover effect */
+}
+
+
+
