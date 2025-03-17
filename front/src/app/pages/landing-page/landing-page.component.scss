@@ -4,32 +4,33 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #f5f5f5;
+  background-color: #ffffff;
 }
 
 .logo {
-  width: 200px; /* Adjust the size of your logo */
+  width: 412px;
   height: auto;
-  margin-bottom: 30px; /* Space between logo and buttons */
+  margin-bottom: 44px;
 }
 
 .button-group {
   display: flex;
-  gap: 20px;
+  gap: 80px;
+  margin-right: 30px;
 }
 
 button {
   color: black;
   background-color: white;
   border: 1px solid black;
-  border-radius: 30px;
+  border-radius: 6px;
   padding: 10px 20px;
   font-size: 1rem;
   text-transform: none;
   box-shadow: none;
 }
 
-/* Override default Angular Material button colors */
+
 button.mat-flat-button {
   background-color: white !important;
   color: black !important;
@@ -37,7 +38,7 @@ button.mat-flat-button {
 }
 
 button.mat-flat-button:hover {
-  background-color: #f0f0f0; /* Light hover effect */
+  background-color: #f0f0f0;
 }
 
 button.mat-raised-button {
@@ -47,7 +48,7 @@ button.mat-raised-button {
 }
 
 button.mat-raised-button:hover {
-  background-color: #f0f0f0; /* Light hover effect */
+  background-color: #f0f0f0;
 }
 
 

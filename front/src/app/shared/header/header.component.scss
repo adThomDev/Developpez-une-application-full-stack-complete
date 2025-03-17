@@ -1,14 +1,23 @@
-header img[src="/assets/logo_p6.png"] {
-  width: 8.75rem;
-  height: 5.06rem;
-  max-width: 100%;
-  height: auto;
-}
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  border: 1px solid black;
 
-@media (max-width: 600px) {
-  header img[src="/assets/logo_p6.png"] {
-    width: 5.75rem;
-    height: 3.31rem;
+  img[src="/assets/logo_p6.png"] {
+    width: 8.75rem;
+    height: 5.06rem;
+    max-width: 100%;
+    height: auto;
+  }
+
+  @media (max-width: 600px) {
+    img[src="/assets/logo_p6.png"] {
+      width: 5.75rem;
+      height: 3.31rem;
+    }
   }
 }
+
 
