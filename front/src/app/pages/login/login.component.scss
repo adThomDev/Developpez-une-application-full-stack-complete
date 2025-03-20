@@ -29,3 +29,9 @@
     margin-bottom: 20px;
   }
 }
+
+.label-on-top-of-form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
