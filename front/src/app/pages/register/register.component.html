@@ -1,7 +1,22 @@
-<div class="register-container">
-  <button mat-icon-button class="back-button" routerLink="/">
-    <mat-icon>arrow_back</mat-icon>
-  </button>
+<div>
+  <!-- Desktop Layout -->
+  <div class="desktop-header" *ngIf="!isSmartphone">
+    <div class="desktop-logo-container">
+      <img class="desktoplogo" src="/assets/logo_p6.png" alt="logo" />
+      <div class="horizontal-border"></div>
+    </div>
+    <button mat-icon-button class="back-button" routerLink="/">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+  </div>
+
+  <!-- Phone Layout -->
+  <div class="phone-header" *ngIf="isSmartphone">
+    <button mat-icon-button class="back-button" routerLink="/">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+    <img class="phonelogo" src="/assets/logo_p6.png" alt="logo" />
+  </div>
 
   <form class="register-form">
     <h2>Inscription</h2>

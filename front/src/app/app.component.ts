@@ -11,11 +11,7 @@ export class AppComponent {
 
   constructor(private router: Router) {}
 
-  get isLandingPage(): boolean {
-    return this.router.url === '/';
-  }
-
-  get isAuthPage(): boolean {
-    return this.router.url === '/login' || this.router.url === '/register';
+  get isLandingOrLoginOrRegisterPage(): boolean {
+    return this.router.url === '/' || this.router.url === '/login' || this.router.url === '/register';
   }
 }

@@ -51,5 +51,21 @@ button.mat-raised-button:hover {
   background-color: #f0f0f0;
 }
 
+@media (max-width: 768px) {
+  .landing-container {
+    justify-content: flex-start;
+    padding-top: 80px;
+  }
 
+  .logo {
+    width: 225px;
+    height: 130px;
+    margin-bottom: 40px;
+  }
 
+  .button-group {
+    flex-direction: column;
+    gap: 30px;
+    margin-right: 0;
+  }
+}

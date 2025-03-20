@@ -1,12 +1,15 @@
 <header>
   <img src="/assets/logo_p6.png" alt="logo" />
 
-  <ng-container *ngIf="!isAuth">
-    <nav>
-      <a routerLink="/logout">Se déconnecter</a>
-      <a routerLink="/articles">Articles</a>
-      <a routerLink="/themes">Thèmes</a>
-      <img src="/assets/user.svg" alt="User" class="user-icon" routerLink="/user" />
-    </nav>
-  </ng-container>
+  <nav>
+    <a routerLink="/logout">Se déconnecter</a>
+    <a routerLink="/articles">Articles</a>
+    <a routerLink="/themes">Thèmes</a>
+    <img
+      src="/assets/user.svg"
+      alt="User"
+      class="user-icon"
+      routerLink="/user"
+    />
+  </nav>
 </header>
