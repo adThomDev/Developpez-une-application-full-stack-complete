@@ -1,20 +1,44 @@
 <header>
   <img src="/assets/logo_p6.png" alt="logo" />
-  <nav>
-    <div class="nav-links">
+
+    <!-- Hamburger button for small screens -->
+    <button *ngIf="isSmallScreen" mat-icon-button (click)="toggleSidePanel()">
+      <mat-icon>menu</mat-icon>
+    </button>
+  
+  <!-- Drawer container for the side panel -->
+  <mat-drawer-container class="drawer-container" *ngIf="isSmallScreen">
+    <mat-drawer #drawer mode="over" position="end">
+      <nav>
+        <a routerLink="/logout" (click)="drawer.close()">Se déconnecter</a>
+        <a routerLink="/articles" (click)="drawer.close()">Articles</a>
+        <a routerLink="/themes" (click)="drawer.close()">Thèmes</a>
+        <a routerLink="/user">
+          <img
+            src="/assets/user.svg"
+            alt="User"
+            class="user-icon"
+            routerLink="/user"
+          />
+        </a>
+      </nav>
+    </mat-drawer>
+  </mat-drawer-container>
+  
+    <!-- Navigation links for larger screens -->
+    <nav *ngIf="!isSmallScreen">
       <a routerLink="/logout">Se déconnecter</a>
       <a routerLink="/articles">Articles</a>
       <a routerLink="/themes">Thèmes</a>
-    </div>
-    <a routerLink="/user">
-      <img
-        src="/assets/user.svg"
-        alt="User"
-        class="user-icon"
-        routerLink="/user"
-      />
-    </a>
-  </nav>
-</header>
+      <a routerLink="/user">
+        <img
+          src="/assets/user.svg"
+          alt="User"
+          class="user-icon"
+          routerLink="/user"
+        />
+      </a>
+    </nav>
+  </header>
 
 
