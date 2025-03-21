@@ -7,16 +7,14 @@ import { AppComponent } from './app.component';
 xdescribe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [
-        RouterModule
-      ],
-      providers: [
-        provideRouter([])
-      ],
-      declarations: [
+    imports: [
+        RouterModule,
         AppComponent
-      ],
-    }).compileComponents();
+    ],
+    providers: [
+        provideRouter([])
+    ],
+}).compileComponents();
   });
 
   it('should create the app', () => {

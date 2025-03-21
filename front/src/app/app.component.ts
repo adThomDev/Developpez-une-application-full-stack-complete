@@ -1,10 +1,16 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
+import { NgIf } from '@angular/common';
+import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { HeaderComponent } from './components/header/header.component';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.scss'],
+    standalone: true,
+    imports: [CommonModule, NgIf, RouterOutlet, RouterModule, HeaderComponent]
 })
 export class AppComponent {
   title = 'MDD';
@@ -15,30 +21,3 @@ export class AppComponent {
     return this.router.url === '/' || this.router.url === '/login' || this.router.url === '/register';
   }
 }
-
-// import { Component } from '@angular/core';
-// import { Router, RouterModule } from '@angular/router';
-// import { CommonModule } from '@angular/common'; // Import CommonModule for *ngIf
-// import { HeaderComponent } from './shared/header/header.component'; // Import the standalone HeaderComponent
-
-// @Component({
-//   selector: 'app-root',
-//   templateUrl: './app.component.html',
-//   styleUrls: ['./app.component.scss'],
-//   standalone: true, // Mark AppComponent as standalone
-//   imports: [
-//     CommonModule, // Import CommonModule for *ngIf
-//     RouterModule, // Import RouterModule for router-outlet
-//     HeaderComponent // Import HeaderComponent
-//   ]
-// })
-// export class AppComponent {
-//   title = 'MDD';
-
-//   constructor(private router: Router) {} // Inject the Router service
-
-//   get isLandingOrLoginOrRegisterPage(): boolean {
-//     return this.router.url === '/' || this.router.url === '/login' || this.router.url === '/register';
-//   }
-// }
-
