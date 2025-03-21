@@ -29,3 +29,30 @@ import { MatIconModule } from '@angular/material/icon';
 })
 export class AppModule {}
 
+// import { NgModule } from '@angular/core';
+// import { MatButtonModule } from '@angular/material/button';
+// import { BrowserModule } from '@angular/platform-browser';
+// import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+// import { AppRoutingModule } from './app-routing.module';
+// import { HomeComponent } from './pages/home/home.component';
+// import { LandingPageComponent } from './pages/landing-page/landing-page.component';
+// import { MatFormFieldModule } from '@angular/material/form-field';
+// import { MatInputModule } from '@angular/material/input';
+// import { MatIconModule } from '@angular/material/icon';
+
+// @NgModule({
+//   declarations: [HomeComponent], // Remove AppComponent from declarations
+//   imports: [
+//     BrowserModule,
+//     AppRoutingModule,
+//     BrowserAnimationsModule,
+//     LandingPageComponent, // Keep LandingPageComponent if it's standalone
+//     MatButtonModule,
+//     MatFormFieldModule,
+//     MatInputModule,
+//     MatIconModule
+//   ],
+//   providers: [],
+//   bootstrap: [] // Remove AppComponent from bootstrap
+// })
+// export class AppModule {}

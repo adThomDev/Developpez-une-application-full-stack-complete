@@ -19,3 +19,53 @@ header {
     }
   }
 }
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+header nav {
+  display: flex;
+  flex-direction: row;
+}
+
+header nav a {
+  text-decoration: none;
+  color: black;
+}
+
+header nav a:nth-child(1) {
+  color: #A40F0F;
+  ;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 100%;
+  letter-spacing: 0%;
+}
+
+header nav a:nth-child(2) {
+  color: #6C5CCF;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 100%;
+  letter-spacing: 0%;
+}
+
+header nav a:nth-child(3) {
+  color: black;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 100%;
+  letter-spacing: 0%;
+}
+
+header nav img.user-icon {
+  text-decoration: none;
+  cursor: pointer;
+  padding-left: 1.25rem;
+}

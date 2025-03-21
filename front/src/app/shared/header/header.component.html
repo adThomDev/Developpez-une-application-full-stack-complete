@@ -1,15 +1,21 @@
 <header>
+  <!-- <mat-icon>arrow_back</mat-icon> -->
   <img src="/assets/logo_p6.png" alt="logo" />
-
   <nav>
-    <a routerLink="/logout">Se déconnecter</a>
-    <a routerLink="/articles">Articles</a>
-    <a routerLink="/themes">Thèmes</a>
-    <img
-      src="/assets/user.svg"
-      alt="User"
-      class="user-icon"
-      routerLink="/user"
-    />
+    <div class="nav-links">
+      <a routerLink="/logout">Se déconnecter</a>
+      <a routerLink="/articles">Articles</a>
+      <a routerLink="/themes">Thèmes</a>
+    </div>
+    <a routerLink="/user">
+      <img
+        src="/assets/user.svg"
+        alt="User"
+        class="user-icon"
+        routerLink="/user"
+      />
+    </a>
   </nav>
 </header>
+
+
