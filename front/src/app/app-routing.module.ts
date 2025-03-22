@@ -4,11 +4,13 @@ import { LandingPageComponent } from './pages/landing-page/landing-page.componen
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { HomeComponent } from './pages/home/home.component';
+import { ThemesComponent } from './pages/themes/themes.component';
 
-const routes: Routes = [
+export const routes: Routes = [
   { path: '', component: LandingPageComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
+  { path: 'themes', component: ThemesComponent },
   { path: 'home', component: HomeComponent },
   { path: '**', redirectTo: '' },
 ];
