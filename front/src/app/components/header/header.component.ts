@@ -36,4 +36,9 @@ export class HeaderComponent {
   toggleSidePanel() {
     if (this.drawer) this.drawer.toggle();
   }
+
+  onBackdropClick() {
+    console.log('backdrop clicked');
+    this.drawer.close();
+  }
 }

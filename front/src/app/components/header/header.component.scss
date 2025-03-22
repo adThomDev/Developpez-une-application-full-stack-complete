@@ -6,16 +6,15 @@ header {
   border-bottom: 1px solid black;
 
   img[src="/assets/logo_p6.png"] {
-    width: 8.75rem;
-    height: 5.06rem;
-    max-width: 100%;
+    width: 140px;
     height: auto;
+    max-width: 100%;
   }
 
   @media (max-width: 600px) {
     img[src="/assets/logo_p6.png"] {
-      width: 5.75rem;
-      height: 3.31rem;
+      width: 120px;
+      height: auto;
     }
   }
 }
@@ -29,6 +28,8 @@ header {
 header nav {
   display: flex;
   flex-direction: row;
+  align-items: center;
+  gap: 16px;
 }
 
 header nav a {
@@ -38,7 +39,6 @@ header nav a {
 
 header nav a:nth-child(1) {
   color: #A40F0F;
-  ;
   font-family: 'Inter', sans-serif;
   font-weight: 700;
   font-size: 14px;
@@ -46,15 +46,7 @@ header nav a:nth-child(1) {
   letter-spacing: 0%;
 }
 
-header nav a:nth-child(2) {
-  color: #6C5CCF;
-  font-family: 'Inter', sans-serif;
-  font-weight: 400;
-  font-size: 20px;
-  line-height: 100%;
-  letter-spacing: 0%;
-}
-
+header nav a:nth-child(2),
 header nav a:nth-child(3) {
   color: black;
   font-family: 'Inter', sans-serif;
@@ -64,39 +56,76 @@ header nav a:nth-child(3) {
   letter-spacing: 0%;
 }
 
+header nav a.router-link-active {
+  color: #6C5CCF;
+}
+
 header nav img.user-icon {
   text-decoration: none;
   cursor: pointer;
-  padding-left: 1.25rem;
 }
 
 .drawer-container {
+  position: fixed;
+  top: 0;
+  right: 0;
   height: 100vh;
-  width: 184px;
-  position:absolute;
-  // position: relative;
-  top: 74px;
-  left: 110px; 
+  width: 100%;
   z-index: 1000;
+  pointer-events: none;
   visibility: hidden;
 }
 
 mat-drawer {
-  width: 184px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 250px;
+  height: 100vh;
   background-color: #ffffff;
-  padding: 16px;
+  padding-top: 24px;
+  z-index: 1001;
+  pointer-events: auto;
+}
+
+mat-drawer-container.mat-drawer-opened {
+  pointer-events: auto;
 }
 
 mat-drawer nav {
   display: flex;
   flex-direction: column;
+  height: 100%;
+  gap: 8px;
   align-items: flex-end;
-  gap: 16px;
+
 }
 
 mat-drawer nav a {
-  display: block;
-  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
   text-decoration: none;
   color: black;
+  width: 100%;
+}
+
+mat-drawer nav a:first-child {
+  padding-top: 30px;
+  padding-right: 16px;
+}
+
+mat-drawer nav a:nth-child(2) {
+  padding-right: 16px;
+}
+
+mat-drawer nav a:nth-child(3) {
+  padding-right: 16px;
+}
+
+mat-drawer nav a:last-child {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
 }
