@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ThemeService } from 'src/services/themeService';
+import { UserService } from 'src/services/userService';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -11,12 +12,24 @@ import { CommonModule } from '@angular/common';
 })
 export class ThemesComponent implements OnInit {
   themes: any[] = [];
+  user: any = null;
 
-  constructor(private themeService: ThemeService) {}
+  constructor(
+    private themeService: ThemeService,
+    private userService: UserService
+  ) {}
 
   ngOnInit(): void {
     this.themeService.getThemes().subscribe((data) => {
       this.themes = data;
     });
+
+    this.userService.getUser().subscribe((data) => {
+      this.user = data;
+    });
+  }
+
+  isSubscribed(themeId: number): boolean {
+    return this.user?.subscribedThemes.includes(themeId);
   }
 }

@@ -2,5 +2,12 @@
   <div *ngFor="let theme of themes" class="theme-card">
     <h2>{{ theme.title }}</h2>
     <p>{{ theme.description }}</p>
+    <button
+      class="subscribe-button"
+      [class.subscribed]="isSubscribed(theme.id)"
+      [disabled]="isSubscribed(theme.id)"
+    >
+      {{ isSubscribed(theme.id) ? 'Déjà abonné' : "S'abonner" }}
+    </button>
   </div>
 </div>
