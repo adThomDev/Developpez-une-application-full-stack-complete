@@ -6,6 +6,7 @@ import { RegisterComponent } from './pages/register/register.component';
 import { ThemesComponent } from './pages/themes/themes.component';
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 import { ArticlesComponent } from './pages/articles/articles.component';
+import { ArticleCreationComponent } from './pages/article-creation/article-creation.component';
 
 export const routes: Routes = [
   { path: '', component: LandingPageComponent },
@@ -14,7 +15,7 @@ export const routes: Routes = [
   { path: 'themes', component: ThemesComponent },
   { path: 'profile', component: UserProfileComponent },
   { path: 'articles', component: ArticlesComponent },
-  // { path: 'create-article', component: ArticleFormComponent },
+  { path: 'create-article', component: ArticleCreationComponent },
   { path: '**', redirectTo: '' },
 ];
 

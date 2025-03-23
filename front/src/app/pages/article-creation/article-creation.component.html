@@ -1,0 +1,51 @@
+<div class="article-creation-container">
+  <div class="header">
+    <button class="back-button" routerLink="/articles">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+    <h1>Créer un nouvel article</h1>
+  </div>
+
+  <form class="article-form">
+    <div class="form-field">
+      <select
+        id="theme"
+        placeholder="Sélectionner un thème"
+        [(ngModel)]="article.themeId"
+        name="theme"
+        required
+      >
+        <option *ngFor="let theme of themes" [value]="theme.id">
+          {{ theme.title }}
+        </option>
+      </select>
+    </div>
+
+    <div class="form-field">
+      <input
+        id="title"
+        placeholder="Titre de l’article"
+        [(ngModel)]="article.title"
+        name="title"
+        type="text"
+        required
+      />
+    </div>
+
+    <div class="form-field">
+      <label for="content">Contenu</label>
+      <textarea
+        id="content"
+        placeholder="Contenu de l’article"
+        [(ngModel)]="article.content"
+        name="content"
+        rows="5"
+        required
+      ></textarea>
+    </div>
+
+    <button type="button" class="create-button" (click)="createArticle()">
+      Créer
+    </button>
+  </form>
+</div>
