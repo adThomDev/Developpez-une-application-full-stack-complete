@@ -30,7 +30,6 @@ button {
   box-shadow: none;
 }
 
-
 button.mat-flat-button {
   background-color: white !important;
   color: black !important;
@@ -51,7 +50,7 @@ button.mat-raised-button:hover {
   background-color: #f0f0f0;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 500px) {
   .landing-container {
     justify-content: flex-start;
     padding-top: 80px;

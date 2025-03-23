@@ -5,7 +5,9 @@
 
   <div class="articles-grid">
     <div *ngFor="let article of articles" class="article-card">
-      <h2>{{ article.title }}</h2>
+      <h2>
+        <a [routerLink]="['/article', article.id]">{{ article.title }}</a>
+      </h2>
       <div class="article-meta">
         <div>{{ article.date }}</div>
         <div>{{ article.authorId }}</div>

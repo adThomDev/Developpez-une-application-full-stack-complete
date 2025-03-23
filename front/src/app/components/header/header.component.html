@@ -14,15 +14,14 @@
   >
     <mat-drawer #drawer mode="over" position="end">
       <nav>
-        <a routerLink="/logout" (click)="drawer.close()">Se déconnecter</a>
-        <a routerLink="/articles" (click)="drawer.close()">Articles</a>
-        <a routerLink="/themes" (click)="drawer.close()">Thèmes</a>
-        <a routerLink="/profile">
+        <a routerLink="/logout" routerLinkActive="router-link-active" (click)="drawer.close()">Se déconnecter</a>
+        <a routerLink="/articles" routerLinkActive="router-link-active" (click)="drawer.close()">Articles</a>
+        <a routerLink="/themes" routerLinkActive="router-link-active" (click)="drawer.close()">Thèmes</a>
+        <a routerLink="/profile" routerLinkActive="router-link-active">
           <img
-            src="/assets/images/user.svg"
+            [src]="isProfileActive ? '/assets/images/user_purple.svg' : '/assets/images/user.svg'"
             alt="User"
             class="user-icon"
-            routerLink="/user"
           />
         </a>
       </nav>
@@ -31,15 +30,14 @@
 
   <!-- large screens -->
   <nav *ngIf="!isSmallScreen">
-    <a routerLink="/logout">Se déconnecter</a>
-    <a routerLink="/articles">Articles</a>
-    <a routerLink="/themes">Thèmes</a>
-    <a routerLink="/profile">
+    <a routerLink="/logout" routerLinkActive="router-link-active">Se déconnecter</a>
+    <a routerLink="/articles" routerLinkActive="router-link-active">Articles</a>
+    <a routerLink="/themes" routerLinkActive="router-link-active">Thèmes</a>
+    <a routerLink="/profile" routerLinkActive="router-link-active" #profileLink="routerLinkActive">
       <img
-        src="/assets/images/user.svg"
+        [src]="profileLink.isActive ? '/assets/images/user_purple.svg' : '/assets/images/user.svg'"
         alt="User"
         class="user-icon"
-        routerLink="/user"
       />
     </a>
   </nav>

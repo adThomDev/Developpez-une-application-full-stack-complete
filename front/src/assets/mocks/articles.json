@@ -3,6 +3,7 @@
     "id": 1,
     "title": "Article 1 title",
     "date": "2025-03-01",
+    "themeId": 1,
     "authorId": "Joe la fritte",
     "content": "Content: lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled..."
   },
@@ -17,6 +18,7 @@
     "id": 3,
     "title": "Article 3 title",
     "date": "2025-04-01",
+    "themeId": 1,
     "authorId": "Joe la fritte",
     "content": "Content: lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled..."
   },
@@ -24,6 +26,7 @@
     "id": 4,
     "title": "Article 4 title",
     "date": "2025-05-01",
+    "themeId": 2,
     "authorId": "bob",
     "content": "Content: lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled..."
   },
@@ -31,6 +34,7 @@
     "id": 5,
     "title": "Article 5 title",
     "date": "2025-06-01",
+    "themeId": 3,
     "authorId": "bidule",
     "content": "Content: lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled..."
   },
@@ -38,6 +42,7 @@
     "id": 6,
     "title": "Article 6 title",
     "date": "2025-07-01",
+    "themeId": 2,
     "authorId": "machin",
     "content": "Content: lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled..."
   }

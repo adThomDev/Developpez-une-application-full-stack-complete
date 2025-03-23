@@ -10,11 +10,11 @@
     <div class="form-field">
       <select
         id="theme"
-        placeholder="Sélectionner un thème"
         [(ngModel)]="article.themeId"
         name="theme"
         required
       >
+        <option value="" disabled selected>Sélectionner un thème</option>
         <option *ngFor="let theme of themes" [value]="theme.id">
           {{ theme.title }}
         </option>

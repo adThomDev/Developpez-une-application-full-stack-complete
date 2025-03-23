@@ -1,6 +1,6 @@
 import { Component, HostListener, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule, MatDrawer } from '@angular/material/sidenav';
 
@@ -19,7 +19,11 @@ import { MatSidenavModule, MatDrawer } from '@angular/material/sidenav';
 })
 export class HeaderComponent {
   isSmallScreen: boolean = false;
+  isProfileActive: boolean = false;
   @ViewChild('drawer') drawer!: MatDrawer;
+
+  constructor(private router: Router) {}
+
   @HostListener('window:resize', [])
   onResize() {
     this.checkScreenSize();
@@ -27,6 +31,9 @@ export class HeaderComponent {
 
   ngOnInit() {
     this.checkScreenSize();
+    this.router.events.subscribe(() => {
+      this.isProfileActive = this.router.url === '/profile';
+    });
   }
 
   checkScreenSize() {
