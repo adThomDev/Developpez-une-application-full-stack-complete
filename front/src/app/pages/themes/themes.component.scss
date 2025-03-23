@@ -1,5 +1,7 @@
 .themes-container {
   display: grid;
+  max-width: 1600px;
+  margin: 0 auto;
   grid-template-columns: repeat(1, 1fr);
   gap: 16px;
   padding: 20px;

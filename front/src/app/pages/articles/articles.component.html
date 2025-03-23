@@ -1,0 +1,18 @@
+<div class="articles-container">
+  <button class="create-article-button" (click)="createArticle()">
+    Créer un article
+  </button>
+
+  <div class="articles-grid">
+    <div *ngFor="let article of articles" class="article-card">
+      <h2>{{ article.title }}</h2>
+      <div class="article-meta">
+        <div>{{ article.date }}</div>
+        <div>{{ article.authorId }}</div>
+      </div>
+      <p class="article-content">
+        {{ article.content }}
+      </p>
+    </div>
+  </div>
+</div>
