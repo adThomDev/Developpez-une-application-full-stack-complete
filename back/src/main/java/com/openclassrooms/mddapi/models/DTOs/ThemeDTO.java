@@ -2,13 +2,10 @@ package com.openclassrooms.mddapi.models.DTOs;
 
 import lombok.Data;
 
-import java.util.Date;
-
 @Data
-public class ArticleDTO {
+public class ThemeDTO {
   private Long id;
   private String title;
-  private Date createdAt;
+  private String description;
   private Long userId;
-  private Long themeId;
 }
