@@ -34,6 +34,7 @@ public class ThemeController {
     return ResponseEntity.ok(themeDTOs);
   }
 
+  //TODO mapper
   private ThemeDTO convertToDTO(Theme theme) {
     ThemeDTO themeDTO = new ThemeDTO();
     themeDTO.setId(theme.getId());

@@ -23,6 +23,9 @@ public class Article {
   @Column(nullable = false)
   private String title;
 
+  @Column(nullable = false)
+  private String content;
+
   @CreatedDate
   @Column(name = "created_at", updatable = false)
   private Date createdAt;

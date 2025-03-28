@@ -8,15 +8,13 @@ public class UserDTO {
   private String username;
   private String email;
   private String password;
-  private Number[] subscribedThemes;
 
   public UserDTO() {
   }
 
-  public UserDTO(String username, String email, Number[] subscribedThemes) {
+  public UserDTO(String username, String email) {
     this.username = username;
     this.email = email;
-    this.subscribedThemes = subscribedThemes;
   }
 
   public UserDTO(Long id, String username, String email, String password) {

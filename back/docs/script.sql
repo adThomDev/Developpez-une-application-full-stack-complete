@@ -12,17 +12,17 @@ INSERT INTO Theme (id, title, description, user_id) VALUES
 (3, 'theme3', 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.', 3);
 
 -- Articles
-INSERT INTO Article (id, title, created_at, user_id, theme_id) VALUES
-(1, 'article1', '2025-01-01 12:00:00', 1, 1),
-(2, 'article2', '2025-01-02 12:00:00', 1, 2),
-(3, 'article3', '2025-01-03 12:00:00', 2, 1),
-(4, 'article4', '2025-01-04 12:00:00', 2, 3),
-(5, 'article5', '2025-01-05 12:00:00', 3, 2),
-(6, 'article6', '2025-01-06 12:00:00', 3, 1),
-(7, 'article7', '2025-01-07 12:00:00', 1, 3),
-(8, 'article8', '2025-01-08 12:00:00', 2, 2),
-(9, 'article9', '2025-01-09 12:00:00', 3, 3),
-(10, 'article10', '2025-01-10 12:00:00', 1, 1);
+INSERT INTO Article (id, title, content, created_at, user_id, theme_id) VALUES
+(1, 'article1', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', '2025-01-01 12:00:00', 1, 1),
+(2, 'article2', 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', '2025-01-02 12:00:00', 1, 2),
+(3, 'article3', 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.', '2025-01-03 12:00:00', 2, 1),
+(4, 'article4', 'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', '2025-01-04 12:00:00', 2, 3),
+(5, 'article5', 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.', '2025-01-05 12:00:00', 3, 2),
+(6, 'article6', 'Totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.', '2025-01-06 12:00:00', 3, 1),
+(7, 'article7', 'Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.', '2025-01-07 12:00:00', 1, 3),
+(8, 'article8', 'Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.', '2025-01-08 12:00:00', 2, 2),
+(9, 'article9', 'Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?', '2025-01-09 12:00:00', 3, 3),
+(10, 'article10', 'Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?', '2025-01-10 12:00:00', 1, 1);
 
 -- Commentaries
 INSERT INTO Commentary (id, content, user_id, article_id) VALUES

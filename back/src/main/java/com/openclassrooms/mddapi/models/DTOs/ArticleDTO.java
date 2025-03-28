@@ -8,7 +8,8 @@ import java.util.Date;
 public class ArticleDTO {
   private Long id;
   private String title;
+  private String content;
   private Date createdAt;
-  private Long userId;
-  private Long themeId;
+  private String author;
+  private String themeTitle;
 }
