@@ -9,8 +9,8 @@
         <a [routerLink]="['/article', article.id]">{{ article.title }}</a>
       </h2>
       <div class="article-meta">
-        <div>{{ article.date }}</div>
-        <div>{{ article.authorId }}</div>
+        <div>{{ article.createdAt }}</div>
+        <div>{{ article.author }}</div>
       </div>
       <p class="article-content">
         {{ article.content }}
