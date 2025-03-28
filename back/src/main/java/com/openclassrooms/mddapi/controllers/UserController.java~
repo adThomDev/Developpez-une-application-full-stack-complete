@@ -1,0 +1,39 @@
+package com.openclassrooms.mddapi.controllers;
+
+import com.openclassrooms.mddapi.models.entities.User;
+import com.openclassrooms.mddapi.services.UserService;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
+
+@RestController
+@RequestMapping("/api/users")
+public class UserController {
+
+  private final UserService userService;
+
+  public UserController(UserService userService) {
+    this.userService = userService;
+  }
+
+  @PostMapping
+  public ResponseEntity<User> createUser(@RequestBody User newUser) {
+    User createdUser = userService.saveUser(newUser);
+    return ResponseEntity.ok(createdUser);
+  }
+
+  @GetMapping("/{id}")
+  public ResponseEntity<User> getUserById(@PathVariable Long id) {
+    Optional<User> user = userService.findById(id);
+    return user.map(ResponseEntity::ok)
+        .orElseGet(() -> ResponseEntity.notFound().build());
+  }
+
+  @PatchMapping("/{id}")
+  public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody User updatedUser) {
+    Optional<User> user = userService.updateUser(id, updatedUser);
+    return user.map(ResponseEntity::ok)
+        .orElseGet(() -> ResponseEntity.notFound().build());
+  }
+}
