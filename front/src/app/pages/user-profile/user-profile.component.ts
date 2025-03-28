@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { UserService } from 'src/services/userService';
 import { ThemeService } from 'src/services/themeService';
+import { User } from 'src/app/interfaces/interface';
 
 @Component({
   selector: 'app-user-profile',
@@ -12,7 +13,7 @@ import { ThemeService } from 'src/services/themeService';
   styleUrls: ['./user-profile.component.scss']
 })
 export class UserProfileComponent implements OnInit {
-  user: any = {
+  user: User = {
     username: '',
     email: '',
     subscribedThemes: []
@@ -26,6 +27,7 @@ export class UserProfileComponent implements OnInit {
       this.user = data;
     });
 
+    //TODO : faire une nouvelle requête pour ne récupérer que les thèmes de l'user
     this.themeService.getThemes().subscribe((data) => {
       this.themes = data;
     });
@@ -40,7 +42,25 @@ export class UserProfileComponent implements OnInit {
   }
 
   saveProfile(): void {
-    console.log('Profile saved:', this.user);
-    // TODO
+    const updatedUser = {
+      username: this.user.username,
+      email: this.user.email,
+      password: (document.getElementById('password') as HTMLInputElement).value
+    };
+  
+    this.userService.saveUserProfile(updatedUser).subscribe({
+      next: (response) => {
+        console.log('Profile successfully updated:', response);
+        alert('Profil sauvegardé');
+      },
+      error: (err) => {
+        console.error('Error updating profile:', err);
+        alert('Une erreur s\'est produite lors de la sauvegarde.');
+      }
+    });
+
+    (document.getElementById('password') as HTMLInputElement).value = '';
   }
+  
+  
 }

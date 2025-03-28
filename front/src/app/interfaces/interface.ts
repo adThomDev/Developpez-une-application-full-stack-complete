@@ -11,3 +11,10 @@ export interface Theme {
   title: string;
   description: string;
 }
+
+export interface User {
+  username: string,
+  email: string,
+  password?: string;
+  subscribedThemes: number[]
+};
