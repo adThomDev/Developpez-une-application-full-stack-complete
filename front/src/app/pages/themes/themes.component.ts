@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ThemeService } from 'src/services/themeService';
 import { UserService } from 'src/services/userService';
 import { CommonModule } from '@angular/common';
+import { Theme } from 'src/app/interfaces/interface';
 
 @Component({
   selector: 'app-themes',
@@ -11,7 +12,7 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./themes.component.scss']
 })
 export class ThemesComponent implements OnInit {
-  themes: any[] = [];
+  themes: Theme[] = [];
   user: any = null;
 
   constructor(
