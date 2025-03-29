@@ -1,12 +1,15 @@
 package com.openclassrooms.mddapi.models.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Data
@@ -30,8 +33,8 @@ public class User {
   @Column(nullable = false)
   private String password;
 
-  @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-  private List<Theme> themes;
+  @ManyToMany(mappedBy = "users")
+  private Set<Theme> themes = new HashSet<>();
 
   public User(String username, String email, String password) {
     this.username = username;
@@ -39,3 +42,4 @@ public class User {
     this.password = password;
   }
 }
+

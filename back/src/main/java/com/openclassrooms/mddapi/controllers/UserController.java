@@ -24,7 +24,7 @@ public class UserController {
     this.userRepository = userRepository;
   }
 
-  @PostMapping
+  @PostMapping("/create")
   public ResponseEntity<UserDTO> createUser(@RequestBody User user) {
     User createdUser = userService.saveUser(user);
     UserDTO userDTO = new UserDTO();
@@ -33,12 +33,6 @@ public class UserController {
     return ResponseEntity.ok(userDTO);
   }
 
-//  @GetMapping("/{id}")
-//  public ResponseEntity<UserDTO> getUserById(@PathVariable Long id) {
-//    Optional<UserDTO> userDTO = userService.findById(id);
-//    return userDTO.map(ResponseEntity::ok)
-//        .orElseGet(() -> ResponseEntity.notFound().build());
-//  }
   @GetMapping("/{id}")
   public ResponseEntity<UserDTO> getUserById(@PathVariable Long id) {
     Optional<User> userOptional = userRepository.findById(id);
@@ -56,12 +50,25 @@ public class UserController {
     }).orElseGet(() -> ResponseEntity.notFound().build());
   }
 
-  @PutMapping("/{id}")
-  public ResponseEntity<UserDTO> updateUser(@PathVariable Long id, @RequestBody UserDTO userDTO) {
-    Optional<UserDTO> updatedUserDTO = userService.updateUser(id, userDTO);
+  @PutMapping("/{userId}")
+  public ResponseEntity<UserDTO> updateUser(@PathVariable Long userId, @RequestBody UserDTO userDTO) {
+    Optional<UserDTO> updatedUserDTO = userService.updateUser(userId, userDTO);
     return updatedUserDTO.map(ResponseEntity::ok)
         .orElseGet(() -> ResponseEntity.notFound().build());
   }
 
+  @PatchMapping("/{userId}/theme/unsub/{themeId}")
+  public ResponseEntity<UserDTO> unsubscribeToTheme(@PathVariable Long userId, @PathVariable Long themeId) {
+    Optional<UserDTO> updatedUserDTO = userService.unsubscribeToTheme(userId, themeId);
+    return updatedUserDTO.map(ResponseEntity::ok)
+        .orElseGet(() -> ResponseEntity.notFound().build());
+  }
+
+  @PatchMapping("/{userId}/theme/sub/{themeId}")
+  public ResponseEntity<UserDTO> subscribeToTheme(@PathVariable Long userId, @PathVariable Long themeId) {
+    Optional<UserDTO> updatedUserDTO = userService.subscribeToTheme(userId, themeId);
+    return updatedUserDTO.map(ResponseEntity::ok)
+        .orElseGet(() -> ResponseEntity.notFound().build());
+  }
 
 }

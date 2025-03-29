@@ -1,15 +1,26 @@
 
 -- Users
 INSERT INTO User (id, username, email, password) VALUES
-(1, 'user1', 'user1@aze.com', 'password1'),
-(2, 'user2', 'user2@aze.com', 'password2'),
-(3, 'user3', 'user3@aze.com', 'password3');
+(1, 'ocrUser1', 'ocruser1@aze.com', 'ocrMdp1'),
+(2, 'ocrUser2', 'ocruser2@aze.com', 'ocrMdp2'),
+(3, 'ocrUser3', 'ocruser3@aze.com', 'ocrMdp3'),
+(4, 'ocrUser4', 'ocruser4@aze.com', 'ocrMdp4');
 
 -- Themes
-INSERT INTO Theme (id, title, description, user_id) VALUES
-(1, 'theme1', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 1),
-(2, 'theme2', 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 2),
-(3, 'theme3', 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.', 3);
+INSERT INTO Theme (id, title, description) VALUES
+(1, 'theme1', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'),
+(2, 'theme2', 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'),
+(3, 'theme3', 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.');
+
+-- for the join table "theme-user"
+INSERT INTO theme_user (theme_id, user_id) VALUES
+(1, 1),
+(2, 1),
+(3, 1),
+(2, 2),
+(3, 2),
+(1, 3),
+(3, 3);
 
 -- Articles
 INSERT INTO Article (id, title, content, created_at, user_id, theme_id) VALUES
@@ -23,6 +34,7 @@ INSERT INTO Article (id, title, content, created_at, user_id, theme_id) VALUES
 (8, 'article8', 'Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.', '2025-01-08 12:00:00', 2, 2),
 (9, 'article9', 'Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?', '2025-01-09 12:00:00', 3, 3),
 (10, 'article10', 'Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?', '2025-01-10 12:00:00', 1, 1);
+
 
 -- Commentaries
 INSERT INTO Commentary (id, content, user_id, article_id) VALUES
