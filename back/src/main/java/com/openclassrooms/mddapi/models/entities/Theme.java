@@ -1,15 +1,12 @@
 package com.openclassrooms.mddapi.models.entities;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Size;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 
 @Entity
 @Data
@@ -26,13 +23,13 @@ public class Theme {
 
   private String description;
 
-  @ManyToMany
+  @ManyToMany(fetch = FetchType.LAZY)
   @JoinTable(
       name = "theme_user",
       joinColumns = @JoinColumn(name = "theme_id"),
       inverseJoinColumns = @JoinColumn(name = "user_id")
   )
-  private Set<User> users = new HashSet<>();
+  private List<UserEntity> users = new ArrayList<>();
 
   @OneToMany(mappedBy = "theme", cascade = CascadeType.ALL, orphanRemoval = true)
   private List<Article> articles;

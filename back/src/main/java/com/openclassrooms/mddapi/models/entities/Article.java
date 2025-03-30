@@ -6,7 +6,6 @@ import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
 
-import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -32,7 +31,7 @@ public class Article {
 
   @ManyToOne
   @JoinColumn(name = "user_id", nullable = false)
-  private User user;
+  private UserEntity userEntity;
 
   @ManyToOne
   @JoinColumn(name = "theme_id", nullable = false)

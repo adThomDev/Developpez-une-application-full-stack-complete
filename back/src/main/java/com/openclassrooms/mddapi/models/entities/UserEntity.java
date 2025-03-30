@@ -1,21 +1,19 @@
 package com.openclassrooms.mddapi.models.entities;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class User {
+public class UserEntity {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,10 +31,10 @@ public class User {
   @Column(nullable = false)
   private String password;
 
-  @ManyToMany(mappedBy = "users")
-  private Set<Theme> themes = new HashSet<>();
+  @ManyToMany(mappedBy = "users", fetch = FetchType.LAZY)
+  private List<Theme> themes = new ArrayList<>();
 
-  public User(String username, String email, String password) {
+  public UserEntity(String username, String email, String password) {
     this.username = username;
     this.email = email;
     this.password = password;

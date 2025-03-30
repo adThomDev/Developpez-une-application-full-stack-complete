@@ -1,27 +1,27 @@
 package com.openclassrooms.mddapi.services;
 
 import com.openclassrooms.mddapi.models.DTOs.UserDTO;
-import com.openclassrooms.mddapi.models.entities.User;
-import com.openclassrooms.mddapi.repositories.UserRepository;
+import com.openclassrooms.mddapi.models.entities.UserEntity;
+import com.openclassrooms.mddapi.repositories.UserEntityRepository;
 import com.openclassrooms.mddapi.repositories.ThemeRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
 @Service
-public class UserService {
+public class UserEntityService {
 
-  private final UserRepository userRepository;
+  private final UserEntityRepository userEntityRepository;
 
   private final ThemeRepository themeRepository;
 
-  public UserService(UserRepository userRepository, ThemeRepository themeRepository) {
-    this.userRepository = userRepository;
+  public UserEntityService(UserEntityRepository userEntityRepository, ThemeRepository themeRepository) {
+    this.userEntityRepository = userEntityRepository;
     this.themeRepository = themeRepository;
   }
 
   public Optional<UserDTO> findById(Long id) {
-    return userRepository.findById(id).map(user -> {
+    return userEntityRepository.findById(id).map(user -> {
       UserDTO userDTO = new UserDTO();
       userDTO.setId(user.getId());
       userDTO.setUsername(user.getUsername());
@@ -31,12 +31,12 @@ public class UserService {
     });
   }
 
-  public User saveUser(User user) {
-    return userRepository.save(user);
+  public UserEntity saveUser(UserEntity userEntity) {
+    return userEntityRepository.save(userEntity);
   }
 
   public Optional<UserDTO> updateUser(Long id, UserDTO updatedUser) {
-    return userRepository.findById(id).map(existingUser -> {
+    return userEntityRepository.findById(id).map(existingUser -> {
       if (updatedUser.getUsername() != null) {
         existingUser.setUsername(updatedUser.getUsername());
       }
@@ -46,7 +46,7 @@ public class UserService {
       if (updatedUser.getPassword() != null) {
         existingUser.setPassword(updatedUser.getPassword());
       }
-      userRepository.save(existingUser);
+      userEntityRepository.save(existingUser);
 
       UserDTO userDTO = new UserDTO();
       userDTO.setId(existingUser.getId());
@@ -58,28 +58,28 @@ public class UserService {
   }
 
   public Optional<UserDTO> unsubscribeToTheme(Long userId, Long themeId) {
-    return userRepository.findById(userId).map(user -> {
+    return userEntityRepository.findById(userId).map(user -> {
       user.getThemes().removeIf(theme -> theme.getId().equals(themeId));
-      User updatedUser = userRepository.save(user);
+      UserEntity updatedUserEntity = userEntityRepository.save(user);
       UserDTO userDTO = new UserDTO();
-      userDTO.setId(updatedUser.getId());
-      userDTO.setUsername(updatedUser.getUsername());
-      userDTO.setEmail(updatedUser.getEmail());
-      userDTO.setPassword(updatedUser.getPassword());
+      userDTO.setId(updatedUserEntity.getId());
+      userDTO.setUsername(updatedUserEntity.getUsername());
+      userDTO.setEmail(updatedUserEntity.getEmail());
+      userDTO.setPassword(updatedUserEntity.getPassword());
       return userDTO;
     });
   }
 
   //TODO si theme/user pas présent, gérer erreurs. idem au dessus
   public Optional<UserDTO> subscribeToTheme(Long userId, Long themeId) {
-    return userRepository.findById(userId).map(user -> {
+    return userEntityRepository.findById(userId).map(user -> {
       user.getThemes().add(themeRepository.findById(themeId).get());
-      User updatedUser = userRepository.save(user);
+      UserEntity updatedUserEntity = userEntityRepository.save(user);
       UserDTO userDTO = new UserDTO();
-      userDTO.setId(updatedUser.getId());
-      userDTO.setUsername(updatedUser.getUsername());
-      userDTO.setEmail(updatedUser.getEmail());
-      userDTO.setPassword(updatedUser.getPassword());
+      userDTO.setId(updatedUserEntity.getId());
+      userDTO.setUsername(updatedUserEntity.getUsername());
+      userDTO.setEmail(updatedUserEntity.getEmail());
+      userDTO.setPassword(updatedUserEntity.getPassword());
       return userDTO;
     });
   }

@@ -2,7 +2,7 @@ package com.openclassrooms.mddapi.controllers;
 
 import com.openclassrooms.mddapi.models.DTOs.ThemeDTO;
 import com.openclassrooms.mddapi.models.entities.Theme;
-import com.openclassrooms.mddapi.models.entities.User;
+import com.openclassrooms.mddapi.models.entities.UserEntity;
 import com.openclassrooms.mddapi.repositories.ThemeRepository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -33,7 +33,8 @@ public class ThemeController {
 
   @GetMapping("/user/{userId}")
   public ResponseEntity<List<ThemeDTO>> getThemesByUserId(@PathVariable Long userId) {
-    List<Theme> themes = themeRepository.findByUsersId(userId);
+    List<Theme> themes = themeRepository.findByUsers_Id(userId);
+//    List<Theme> themes = themeRepository.findByUsersId(userId);
     List<ThemeDTO> themeDTOs = themes.stream()
         .map(this::convertToDTO)
         .collect(Collectors.toList());
@@ -48,7 +49,7 @@ public class ThemeController {
     themeDTO.setDescription(theme.getDescription());
 
     List<Long> userIds = theme.getUsers().stream()
-        .map(User::getId)
+        .map(UserEntity::getId)
         .collect(Collectors.toList());
     themeDTO.setUserIds(userIds);
 

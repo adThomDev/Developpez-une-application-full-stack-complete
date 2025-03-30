@@ -14,12 +14,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.openclassrooms.mddapi.models.entities.User;
+import com.openclassrooms.mddapi.models.entities.UserEntity;
 import com.openclassrooms.mddapi.payload.request.LoginRequest;
 import com.openclassrooms.mddapi.payload.request.SignupRequest;
 import com.openclassrooms.mddapi.payload.response.JwtResponse;
 import com.openclassrooms.mddapi.payload.response.MessageResponse;
-import com.openclassrooms.mddapi.repositories.UserRepository;
+import com.openclassrooms.mddapi.repositories.UserEntityRepository;
 import com.openclassrooms.mddapi.security.jwt.JwtUtils;
 import com.openclassrooms.mddapi.security.services.UserDetailsImpl;
 
@@ -30,16 +30,16 @@ public class AuthController {
   private final AuthenticationManager authenticationManager;
   private final JwtUtils jwtUtils;
   private final PasswordEncoder passwordEncoder;
-  private final UserRepository userRepository;
+  private final UserEntityRepository userEntityRepository;
 
   AuthController(AuthenticationManager authenticationManager,
                  PasswordEncoder passwordEncoder,
                  JwtUtils jwtUtils,
-                 UserRepository userRepository) {
+                 UserEntityRepository userEntityRepository) {
     this.authenticationManager = authenticationManager;
     this.jwtUtils = jwtUtils;
     this.passwordEncoder = passwordEncoder;
-    this.userRepository = userRepository;
+    this.userEntityRepository = userEntityRepository;
   }
 
   @PostMapping("/login")
@@ -61,17 +61,17 @@ public class AuthController {
 
   @PostMapping("/register")
   public ResponseEntity<?> registerUser(@Valid @RequestBody SignupRequest signUpRequest) {
-    if (userRepository.existsByEmail(signUpRequest.getEmail())) {
+    if (userEntityRepository.existsByEmail(signUpRequest.getEmail())) {
       return ResponseEntity
           .badRequest()
           .body(new MessageResponse("Error: Email is already taken!"));
     }
 
-    User user = new User(signUpRequest.getUsername(),
+    UserEntity userEntity = new UserEntity(signUpRequest.getUsername(),
         signUpRequest.getEmail(),
         passwordEncoder.encode(signUpRequest.getPassword()));
 
-    userRepository.save(user);
+    userEntityRepository.save(userEntity);
 
     return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
   }

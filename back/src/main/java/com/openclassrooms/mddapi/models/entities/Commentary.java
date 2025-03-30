@@ -20,7 +20,7 @@ public class Commentary {
 
   @ManyToOne
   @JoinColumn(name = "user_id", nullable = false)
-  private User user;
+  private UserEntity userEntity;
 
   @ManyToOne
   @JoinColumn(name = "article_id", nullable = false)

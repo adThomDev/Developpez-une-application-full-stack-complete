@@ -9,5 +9,8 @@ import java.util.List;
 @Repository
 public interface ThemeRepository extends JpaRepository<Theme, Long> {
 
-  List<Theme> findByUsersId(Long userId);
+//  List<Theme> findByUsersId(Long userId);
+  //TODO adapter la logique dans les services/controllers
+  List<Theme> findByUsers_Id(Long userId);
+
 }

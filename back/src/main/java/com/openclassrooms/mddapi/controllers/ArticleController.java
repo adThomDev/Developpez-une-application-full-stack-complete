@@ -41,7 +41,7 @@ public class ArticleController {
     articleDTO.setTitle(article.getTitle());
     articleDTO.setContent(article.getContent());
     articleDTO.setCreatedAt(article.getCreatedAt());
-    articleDTO.setAuthor(article.getUser().getUsername());
+    articleDTO.setAuthor(article.getUserEntity().getUsername());
     articleDTO.setThemeTitle(article.getTheme().getTitle());
     return articleDTO;
   }
