@@ -18,3 +18,22 @@ export interface User {
   password?: string;
   subscribedThemes: number[]
 };
+
+export interface SessionInformation {
+  token: string;
+  type: string;
+  id: number;
+  username: string;
+  email: string;
+}
+
+export interface LoginRequest {
+  email: string;
+  password: string;
+}
+
+export interface RegisterRequest {
+  email: string;
+  username: string;
+  password: string;
+}

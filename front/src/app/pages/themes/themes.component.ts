@@ -1,13 +1,23 @@
 import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { JwtInterceptor } from 'src/app/interceptors/jwt.interceptor';
 import { ThemeService } from 'src/services/themeService';
 import { UserService } from 'src/services/userService';
-import { CommonModule } from '@angular/common';
 import { Theme } from 'src/app/interfaces/interface';
 
 @Component({
   selector: 'app-themes',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, HttpClientModule],
+    providers: [
+      ThemeService, UserService,
+      {
+        provide: HTTP_INTERCEPTORS,
+        useClass: JwtInterceptor,
+        multi: true,
+      },
+    ],
   templateUrl: './themes.component.html',
   styleUrls: ['./themes.component.scss']
 })

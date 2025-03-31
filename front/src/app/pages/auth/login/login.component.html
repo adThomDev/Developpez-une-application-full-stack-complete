@@ -18,32 +18,27 @@
     <img class="phonelogo" src="/assets/images/logo_p6.png" alt="logo" />
   </div>
 
-  <form class="register-form">
-    <h2>Inscription</h2>
+  <!-- Form -->
+  <form class="login-form" [formGroup]="form" (ngSubmit)="submit()">
+    <h2>Se connecter</h2>
 
     <div class="label-on-top-of-form-field">
-      <label for="username">Nom d'utilisateur</label>
+      <label for="email">E-mail ou nom d'utilisateur</label>
       <mat-form-field appearance="outline">
-        <input matInput id="username" type="text" autocomplete="username" required />
-      </mat-form-field>
-    </div>
-
-    <div class="label-on-top-of-form-field">
-      <label for="emailAddress">Adresse e-mail</label>
-      <mat-form-field appearance="outline">
-        <input matInput id="emailAddress" type="email" autocomplete="email" required />
+        <input matInput type="text" id="email" formControlName="email" autocomplete="email" required />
       </mat-form-field>
     </div>
 
     <div class="label-on-top-of-form-field">
       <label for="mdp">Mot de passe</label>
       <mat-form-field appearance="outline">
-        <input matInput id="mdp" type="password" autocomplete="new-password" required />
+        <input matInput type="password" id="mdp" formControlName="password" autocomplete="current-password" required />
       </mat-form-field>
     </div>
 
-    <button mat-raised-button color="primary" class="register-button">
-      S'inscrire
+    <button mat-raised-button color="primary" class="login-button" type="submit" [disabled]="form.invalid">
+      Se connecter
     </button>
+    <span *ngIf="onError" class="error ml2">Une erreur est survenue</span>
   </form>
 </div>

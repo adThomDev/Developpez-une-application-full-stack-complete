@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { UserService } from 'src/services/userService';
 import { ThemeService } from 'src/services/themeService';
 import { User } from 'src/app/interfaces/interface';
+import { Theme } from 'src/app/interfaces/interface';
 
 @Component({
   selector: 'app-user-profile',
@@ -18,7 +19,10 @@ export class UserProfileComponent implements OnInit {
     email: '',
     subscribedThemes: []
   };
-  themes: any[] = [];
+  themes: Theme[] = [];
+
+  //TODO temporaire : userId
+  private userId: number = 1;
 
   constructor(private userService: UserService, private themeService: ThemeService) {}
 
@@ -27,8 +31,7 @@ export class UserProfileComponent implements OnInit {
       this.user = data;
     });
 
-    //TODO : faire une nouvelle requête pour ne récupérer que les thèmes de l'user
-    this.themeService.getThemes().subscribe((data) => {
+    this.themeService.getThemesByUserId(this.userId).subscribe((data) => {
       this.themes = data;
     });
   }
