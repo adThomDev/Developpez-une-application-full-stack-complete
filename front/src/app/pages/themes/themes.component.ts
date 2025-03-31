@@ -10,16 +10,17 @@ import { Theme } from 'src/app/interfaces/interface';
   selector: 'app-themes',
   standalone: true,
   imports: [CommonModule, HttpClientModule],
-    providers: [
-      ThemeService, UserService,
-      {
-        provide: HTTP_INTERCEPTORS,
-        useClass: JwtInterceptor,
-        multi: true,
-      },
-    ],
+  providers: [
+    ThemeService,
+    UserService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: JwtInterceptor,
+      multi: true,
+    },
+  ],
   templateUrl: './themes.component.html',
-  styleUrls: ['./themes.component.scss']
+  styleUrls: ['./themes.component.scss'],
 })
 export class ThemesComponent implements OnInit {
   themes: Theme[] = [];

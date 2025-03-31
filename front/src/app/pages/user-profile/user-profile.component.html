@@ -1,45 +1,44 @@
 <div class="user-profile-container">
   <h1>Profil utilisateur</h1>
 
+  <!-- Form -->
   <form class="profile-form">
     <div class="form-field">
       <input
+        type="text"
         id="username"
         name="username"
         [(ngModel)]="user.username"
-        type="text"
         placeholder="nom d'utilisateur"
         autocomplete="username"
       />
     </div>
-
     <div class="form-field">
       <input
+        type="email"
         id="email"
         name="email"
         [(ngModel)]="user.email"
-        type="email"
         placeholder="email@email.fr"
         autocomplete="email"
       />
     </div>
-
     <div class="form-field">
       <input
+        type="password"
         id="password"
         name="password"
-        type="password"
         placeholder="Mot de passe"
         autocomplete="new-password"
       />
     </div>
-
     <button type="button" (click)="saveProfile()">Sauvegarder</button>
   </form>
 
   <hr />
 
   <h2>Abonnements</h2>
+  <!-- Comments -->
   <div class="themes-container">
     <ng-container *ngFor="let theme of themes">
       <div class="theme-card">
