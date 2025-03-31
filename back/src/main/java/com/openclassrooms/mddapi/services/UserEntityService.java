@@ -1,6 +1,7 @@
 package com.openclassrooms.mddapi.services;
 
 import com.openclassrooms.mddapi.models.DTOs.UserDTO;
+import com.openclassrooms.mddapi.models.entities.Theme;
 import com.openclassrooms.mddapi.models.entities.UserEntity;
 import com.openclassrooms.mddapi.repositories.UserEntityRepository;
 import com.openclassrooms.mddapi.repositories.ThemeRepository;
@@ -19,7 +20,7 @@ public class UserEntityService {
     this.userEntityRepository = userEntityRepository;
     this.themeRepository = themeRepository;
   }
-
+//TODO dans mapper
   public Optional<UserDTO> findById(Long id) {
     return userEntityRepository.findById(id).map(user -> {
       UserDTO userDTO = new UserDTO();
@@ -57,30 +58,41 @@ public class UserEntityService {
     });
   }
 
-  public Optional<UserDTO> unsubscribeToTheme(Long userId, Long themeId) {
-    return userEntityRepository.findById(userId).map(user -> {
-      user.getThemes().removeIf(theme -> theme.getId().equals(themeId));
-      UserEntity updatedUserEntity = userEntityRepository.save(user);
-      UserDTO userDTO = new UserDTO();
-      userDTO.setId(updatedUserEntity.getId());
-      userDTO.setUsername(updatedUserEntity.getUsername());
-      userDTO.setEmail(updatedUserEntity.getEmail());
-      userDTO.setPassword(updatedUserEntity.getPassword());
-      return userDTO;
-    });
+  public boolean subscribeToTheme(Long userId, Long themeId) {
+    Optional<UserEntity> userOpt = userEntityRepository.findById(userId);
+    Optional<Theme> themeOpt = themeRepository.findById(themeId);
+
+    if (userOpt.isPresent() && themeOpt.isPresent()) {
+      UserEntity user = userOpt.get();
+      Theme theme = themeOpt.get();
+
+      user.getThemes().add(theme);
+      theme.getUsers().add(user);
+      themeRepository.save(theme);
+
+      return true;
+    }
+
+    return false;
   }
 
-  //TODO si theme/user pas présent, gérer erreurs. idem au dessus
-  public Optional<UserDTO> subscribeToTheme(Long userId, Long themeId) {
-    return userEntityRepository.findById(userId).map(user -> {
-      user.getThemes().add(themeRepository.findById(themeId).get());
-      UserEntity updatedUserEntity = userEntityRepository.save(user);
-      UserDTO userDTO = new UserDTO();
-      userDTO.setId(updatedUserEntity.getId());
-      userDTO.setUsername(updatedUserEntity.getUsername());
-      userDTO.setEmail(updatedUserEntity.getEmail());
-      userDTO.setPassword(updatedUserEntity.getPassword());
-      return userDTO;
-    });
+  public boolean unsubscribeToTheme(Long userId, Long themeId) {
+    Optional<UserEntity> userOpt = userEntityRepository.findById(userId);
+    Optional<Theme> themeOpt = themeRepository.findById(themeId);
+
+    if (userOpt.isPresent() && themeOpt.isPresent()) {
+      UserEntity user = userOpt.get();
+      Theme theme = themeOpt.get();
+
+      user.getThemes().remove(theme);
+      theme.getUsers().remove(user);
+      themeRepository.save(theme);
+
+      return true;
+    }
+
+    return false;
   }
+
+
 }

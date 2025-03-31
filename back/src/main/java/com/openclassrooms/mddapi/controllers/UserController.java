@@ -56,18 +56,17 @@ public class UserController {
         .orElseGet(() -> ResponseEntity.notFound().build());
   }
 
-  @PatchMapping("/{userId}/theme/unsub/{themeId}")
-  public ResponseEntity<UserDTO> unsubscribeToTheme(@PathVariable Long userId, @PathVariable Long themeId) {
-    Optional<UserDTO> updatedUserDTO = userEntityService.unsubscribeToTheme(userId, themeId);
-    return updatedUserDTO.map(ResponseEntity::ok)
-        .orElseGet(() -> ResponseEntity.notFound().build());
+  @PatchMapping("/{userId}/theme/sub/{themeId}")
+  public ResponseEntity<Void> subscribeToTheme(@PathVariable Long userId, @PathVariable Long themeId) {
+    boolean success = userEntityService.subscribeToTheme(userId, themeId);
+    return success ? ResponseEntity.ok().build() : ResponseEntity.notFound().build();
   }
 
-  @PatchMapping("/{userId}/theme/sub/{themeId}")
-  public ResponseEntity<UserDTO> subscribeToTheme(@PathVariable Long userId, @PathVariable Long themeId) {
-    Optional<UserDTO> updatedUserDTO = userEntityService.subscribeToTheme(userId, themeId);
-    return updatedUserDTO.map(ResponseEntity::ok)
-        .orElseGet(() -> ResponseEntity.notFound().build());
+  @PatchMapping("/{userId}/theme/unsub/{themeId}")
+  public ResponseEntity<Void> unsubscribeToTheme(@PathVariable Long userId, @PathVariable Long themeId) {
+    boolean success = userEntityService.unsubscribeToTheme(userId, themeId);
+    return success ? ResponseEntity.ok().build() : ResponseEntity.notFound().build();
   }
+
 
 }

@@ -4,6 +4,7 @@ import com.openclassrooms.mddapi.models.DTOs.ThemeDTO;
 import com.openclassrooms.mddapi.models.entities.Theme;
 import com.openclassrooms.mddapi.models.entities.UserEntity;
 import com.openclassrooms.mddapi.repositories.ThemeRepository;
+import com.openclassrooms.mddapi.repositories.UserEntityRepository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,9 +18,11 @@ import java.util.stream.Collectors;
 public class ThemeController {
 
   private final ThemeRepository themeRepository;
+  private final UserEntityRepository userRepository;
 
-  public ThemeController(ThemeRepository themeRepository) {
+  public ThemeController(ThemeRepository themeRepository, UserEntityRepository userRepository) {
     this.themeRepository = themeRepository;
+    this.userRepository = userRepository;
   }
 
   @GetMapping
@@ -34,7 +37,6 @@ public class ThemeController {
   @GetMapping("/user/{userId}")
   public ResponseEntity<List<ThemeDTO>> getThemesByUserId(@PathVariable Long userId) {
     List<Theme> themes = themeRepository.findByUsers_Id(userId);
-//    List<Theme> themes = themeRepository.findByUsersId(userId);
     List<ThemeDTO> themeDTOs = themes.stream()
         .map(this::convertToDTO)
         .collect(Collectors.toList());
