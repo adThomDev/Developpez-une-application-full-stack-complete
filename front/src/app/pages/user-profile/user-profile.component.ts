@@ -40,9 +40,9 @@ export class UserProfileComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    const userId = this.sessionService.getUserId();
-    if (!userId) {
-      console.error('User ID not found in JWT');
+    this.userId = this.sessionService.getUserId();
+    if (!this.userId) {
+      console.error('User ID not found in session information');
       return;
     }
 
@@ -50,7 +50,7 @@ export class UserProfileComponent implements OnInit {
       this.user = data;
     });
 
-    this.themeService.getThemesByUserId(userId).subscribe((data) => {
+    this.themeService.getThemesByUserId(this.userId).subscribe((data) => {
       this.themes = data;
     });
   }
@@ -60,9 +60,26 @@ export class UserProfileComponent implements OnInit {
   }
 
   unsubscribe(themeId: number): void {
-    this.user.subscribedThemes = this.user.subscribedThemes.filter(
-      (id: number) => id !== themeId
-    );
+    if (!this.userId) {
+      console.error('User ID not found in session');
+      return;
+    }
+  
+    this.userService.unsubscribeTheme(themeId).subscribe({
+      next: () => {
+        console.log(`Successfully unsubscribed from theme with ID: ${themeId}`);
+        this.user.subscribedThemes = this.user.subscribedThemes.filter(
+          (id: number) => id !== themeId
+        );
+  
+        this.themeService.getThemesByUserId(this.userId!).subscribe((data) => {
+          this.themes = data;
+        });
+      },
+      error: (err) => {
+        console.error(`Error unsubscribing from theme with ID: ${themeId}`, err);
+      },
+    });
   }
 
   saveProfile(): void {
@@ -72,14 +89,13 @@ export class UserProfileComponent implements OnInit {
       password: (document.getElementById('password') as HTMLInputElement).value,
     };
 
-    //TODO copier ça pour le register
     this.userService.saveUserProfile(updatedUser).subscribe({
       next: (response) => {
-        console.log('Profile successfully updated:', response);
+        console.log('Profile successfully updated :', response);
         alert('Profil sauvegardé');
       },
       error: (err) => {
-        console.error('Error updating profile:', err);
+        console.error('Error updating profile :', err);
         alert("Une erreur s'est produite lors de la sauvegarde.");
       },
     });

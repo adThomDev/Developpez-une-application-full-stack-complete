@@ -5,11 +5,13 @@ import { SessionInformation } from 'src/app/interfaces/interface';
   providedIn: 'root',
 })
 export class SessionService {
-  private readonly TOKEN_KEY = 'authToken';
   private readonly SESSION_KEY = 'sessionInfo';
   public sessionInformation: SessionInformation | null = null;
 
   get isLogged(): boolean {
+    if (!this.sessionInformation) {
+      this.loadSession();
+    }
     return !!this.sessionInformation?.token;
   }
 

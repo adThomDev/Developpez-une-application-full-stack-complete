@@ -6,6 +6,7 @@
       class="subscribe-button"
       [class.subscribed]="isSubscribed(theme.id)"
       [disabled]="isSubscribed(theme.id)"
+      (click)="subscribe(theme.id)"
     >
       {{ isSubscribed(theme.id) ? 'Déjà abonné' : "S'abonner" }}
     </button>

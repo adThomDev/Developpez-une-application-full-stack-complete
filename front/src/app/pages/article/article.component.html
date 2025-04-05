@@ -17,8 +17,8 @@
 
   <h2>Commentaires</h2>
   <div class="comments-section">
-    <div *ngFor="let comment of comments" class="comment">
-      <div class="comment-username">{{ comment.usernameId }}</div>
+    <div *ngFor="let comment of article.commentaries" class="comment">
+      <div class="comment-username">{{ comment.author }}</div>
       <div class="comment-content">{{ comment.content }}</div>
     </div>
   </div>

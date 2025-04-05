@@ -14,7 +14,7 @@
   >
     <mat-drawer #drawer mode="over" position="end">
       <nav>
-        <a routerLink="/logout" routerLinkActive="router-link-active" (click)="drawer.close()">Se déconnecter</a>
+        <a (click)="logout(); drawer.close()">Se déconnecter</a>
         <a routerLink="/articles" routerLinkActive="router-link-active" (click)="drawer.close()">Articles</a>
         <a routerLink="/themes" routerLinkActive="router-link-active" (click)="drawer.close()">Thèmes</a>
         <a routerLink="/profile" routerLinkActive="router-link-active">
@@ -30,7 +30,7 @@
 
   <!-- large screens -->
   <nav *ngIf="!isSmallScreen">
-    <a routerLink="/logout" routerLinkActive="router-link-active">Se déconnecter</a>
+    <a (click)="logout()">Se déconnecter</a>
     <a routerLink="/articles" routerLinkActive="router-link-active">Articles</a>
     <a routerLink="/themes" routerLinkActive="router-link-active">Thèmes</a>
     <a routerLink="/profile" routerLinkActive="router-link-active" #profileLink="routerLinkActive">

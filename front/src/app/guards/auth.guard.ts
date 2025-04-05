@@ -2,14 +2,12 @@ import {Injectable} from "@angular/core";
 import {CanActivate, Router} from "@angular/router"; 
 import { SessionService } from 'src/services/session.service';
 
-@Injectable({providedIn: 'root'})
+@Injectable({ providedIn: 'root' })
 export class AuthGuard implements CanActivate {
-
-  constructor( 
+  constructor(
     private router: Router,
-    private sessionService: SessionService,
-  ) {
-  }
+    private sessionService: SessionService
+  ) {}
 
   public canActivate(): boolean {
     if (!this.sessionService.isLogged) {

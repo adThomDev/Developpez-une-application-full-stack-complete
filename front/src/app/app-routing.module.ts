@@ -39,6 +39,7 @@ export const routes: Routes = [
   },
   { path: '**', redirectTo: '' },
 ];
+//TODO : clean
 // export const routes: Routes = [
 //   { path: '', component: LandingPageComponent },
 //   { path: 'login', component: LoginComponent },

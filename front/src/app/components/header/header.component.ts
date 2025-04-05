@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule, MatDrawer } from '@angular/material/sidenav';
+import { SessionService } from 'src/services/session.service';
 
 @Component({
   selector: 'app-header',
@@ -22,7 +23,7 @@ export class HeaderComponent {
   isProfileActive: boolean = false;
   @ViewChild('drawer') drawer!: MatDrawer;
 
-  constructor(private router: Router) {}
+  constructor(private sessionService: SessionService, private router: Router) {}
 
   @HostListener('window:resize', [])
   onResize() {
@@ -34,6 +35,11 @@ export class HeaderComponent {
     this.router.events.subscribe(() => {
       this.isProfileActive = this.router.url === '/profile';
     });
+  }
+
+  logout(): void {
+    this.sessionService.logOut();
+    this.router.navigate(['/']);
   }
 
   checkScreenSize() {

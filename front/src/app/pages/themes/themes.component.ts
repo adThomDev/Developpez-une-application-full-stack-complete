@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptor } from 'src/app/interceptors/jwt.interceptor';
@@ -28,7 +28,7 @@ export class ThemesComponent implements OnInit {
 
   constructor(
     private themeService: ThemeService,
-    private userService: UserService
+    private userService: UserService,
   ) {}
 
   ngOnInit(): void {
@@ -44,4 +44,17 @@ export class ThemesComponent implements OnInit {
   isSubscribed(themeId: number): boolean {
     return this.user?.subscribedThemes.includes(themeId);
   }
+
+  subscribe(themeId: number): void {
+    this.userService.subscribeTheme(themeId).subscribe({
+      next: () => {
+        console.log(`Successfully subscribed to theme with ID: ${themeId}`);
+        this.user.subscribedThemes.push(themeId);
+      },
+      error: (err) => {
+        console.error(`Error subscribing to theme with ID: ${themeId}`, err);
+      },
+    });
+  }
+
 }
