@@ -3,6 +3,7 @@ package com.openclassrooms.mddapi.models.DTOs;
 import lombok.Data;
 
 import java.util.Date;
+import java.util.List;
 
 @Data
 public class ArticleDTO {
@@ -12,4 +13,5 @@ public class ArticleDTO {
   private Date createdAt;
   private String author;
   private String themeTitle;
+  private List<CommentaryDTO> commentaries;
 }
