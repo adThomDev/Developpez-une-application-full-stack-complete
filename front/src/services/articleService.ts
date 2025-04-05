@@ -5,9 +5,10 @@ import { BASE_URL } from 'src/app/constants/constants';
 import { Article } from 'src/app/interfaces/interface';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ArticleService {
+  // mocks :
   // private articlesUrl = 'assets/mocks/articles.json';
   private articlesUrl = `${BASE_URL}/article`;
 
@@ -25,5 +26,14 @@ export class ArticleService {
   addCommentary(articleId: number, content: string): Observable<any> {
     const url = `${this.articlesUrl}/${articleId}/commentary`;
     return this.http.post<any>(url, { content });
+  }
+
+  createArticle(article: {
+    themeId: string;
+    title: string;
+    content: string;
+  }): Observable<any> {
+    const url = `${this.articlesUrl}`;
+    return this.http.post<any>(url, article);
   }
 }

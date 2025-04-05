@@ -13,11 +13,11 @@ export interface Theme {
 }
 
 export interface User {
-  username: string,
-  email: string,
+  username: string;
+  email: string;
   password?: string;
-  subscribedThemes: number[]
-};
+  subscribedThemes: number[];
+}
 
 export interface SessionInformation {
   token: string;

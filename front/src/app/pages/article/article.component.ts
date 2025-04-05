@@ -62,7 +62,7 @@ export class ArticleComponent implements OnInit {
     if (this.newComment.trim() && this.article) {
       const articleId = this.article.id;
       const content = this.newComment;
-  
+
       this.articleService.addCommentary(articleId, content).subscribe({
         next: () => {
           console.log('Comment added successfully');
@@ -87,5 +87,4 @@ export class ArticleComponent implements OnInit {
       },
     });
   }
-
 }

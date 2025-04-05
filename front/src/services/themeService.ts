@@ -7,6 +7,7 @@ import { BASE_URL } from 'src/app/constants/constants';
   providedIn: 'root'
 })
 export class ThemeService {
+  // mocks :
   // private themesUrl = 'assets/mocks/themes.json';
   private themesUrl = `${BASE_URL}/theme`;
   private themesUrlByUser = `${BASE_URL}/theme/user/`;
