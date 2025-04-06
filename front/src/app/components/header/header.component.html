@@ -7,19 +7,33 @@
     <mat-icon>menu</mat-icon>
   </button>
   <!-- side panel -->
-  <mat-drawer-container
-    class="drawer-container"
-    *ngIf="isSmallScreen"
-    (backdropClick)="onBackdropClick()"
-  >
+  <mat-drawer-container class="drawer-container" *ngIf="isSmallScreen">
     <mat-drawer #drawer mode="over" position="end">
       <nav>
         <a (click)="logout(); drawer.close()">Se déconnecter</a>
-        <a routerLink="/articles" routerLinkActive="router-link-active" (click)="drawer.close()">Articles</a>
-        <a routerLink="/themes" routerLinkActive="router-link-active" (click)="drawer.close()">Thèmes</a>
-        <a routerLink="/profile" routerLinkActive="router-link-active">
+        <a
+          routerLink="/articles"
+          routerLinkActive="router-link-active"
+          (click)="drawer.close()"
+          >Articles</a
+        >
+        <a
+          routerLink="/themes"
+          routerLinkActive="router-link-active"
+          (click)="drawer.close()"
+          >Thèmes</a
+        >
+        <a
+          routerLink="/profile"
+          routerLinkActive="router-link-active"
+          (click)="drawer.close()"
+        >
           <img
-            [src]="isProfileActive ? '/assets/images/user_purple.svg' : '/assets/images/user.svg'"
+            [src]="
+              isProfileActive
+                ? '/assets/images/user_purple.svg'
+                : '/assets/images/user.svg'
+            "
             alt="User"
             class="user-icon"
           />
@@ -33,9 +47,17 @@
     <a (click)="logout()">Se déconnecter</a>
     <a routerLink="/articles" routerLinkActive="router-link-active">Articles</a>
     <a routerLink="/themes" routerLinkActive="router-link-active">Thèmes</a>
-    <a routerLink="/profile" routerLinkActive="router-link-active" #profileLink="routerLinkActive">
+    <a
+      routerLink="/profile"
+      routerLinkActive="router-link-active"
+      #profileLink="routerLinkActive"
+    >
       <img
-        [src]="profileLink.isActive ? '/assets/images/user_purple.svg' : '/assets/images/user.svg'"
+        [src]="
+          profileLink.isActive
+            ? '/assets/images/user_purple.svg'
+            : '/assets/images/user.svg'
+        "
         alt="User"
         class="user-icon"
       />

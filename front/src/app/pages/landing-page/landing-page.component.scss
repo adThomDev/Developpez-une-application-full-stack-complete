@@ -8,23 +8,23 @@
 }
 
 .logo {
-  width: 412px;
+  width: 25.75rem;
   height: auto;
-  margin-bottom: 44px;
+  margin-bottom: 2.75rem;
 }
 
 .button-group {
   display: flex;
-  gap: 80px;
-  margin-right: 30px;
+  gap: 5rem;
+  margin-right: 1.875rem;
 }
 
 button {
   color: black;
   background-color: white;
-  border: 1px solid black;
-  border-radius: 6px;
-  padding: 10px 20px;
+  border: 0.0625rem solid black;
+  border-radius: 0.375rem;
+  padding: 0.625rem 1.25rem;
   font-size: 1rem;
   text-transform: none;
   box-shadow: none;
@@ -33,7 +33,7 @@ button {
 button.mat-flat-button {
   background-color: white !important;
   color: black !important;
-  border: 1px solid black !important;
+  border: 0.0625rem solid black !important;
 }
 
 button.mat-flat-button:hover {
@@ -43,28 +43,28 @@ button.mat-flat-button:hover {
 button.mat-raised-button {
   background-color: white !important;
   color: black !important;
-  border: 1px solid black !important;
+  border: 0.0625rem solid black !important;
 }
 
 button.mat-raised-button:hover {
   background-color: #f0f0f0;
 }
 
-@media (max-width: 500px) {
+@media (max-width: 31.25rem) {
   .landing-container {
     justify-content: flex-start;
-    padding-top: 80px;
+    padding-top: 5rem;
   }
 
   .logo {
-    width: 225px;
-    height: 130px;
-    margin-bottom: 40px;
+    width: 14rem;
+    height: 8.125rem;
+    margin-bottom: 2.5rem;
   }
 
   .button-group {
     flex-direction: column;
-    gap: 30px;
+    gap: 1.875rem;
     margin-right: 0;
   }
 }

@@ -2,18 +2,18 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px 20px;
-  border-bottom: 1px solid black;
+  padding: 0.625rem 1.25rem;
+  border-bottom: 0.0625rem solid black;
 
   img[src="/assets/images/logo_p6.png"] {
-    width: 140px;
+    width: 8.75rem;
     height: auto;
     max-width: 100%;
   }
 
-  @media (max-width: 500px) {
+  @media (max-width: 31.25rem) {
     img[src="/assets/images/logo_p6.png"] {
-      width: 120px;
+      width: 7.5rem;
       height: auto;
     }
   }
@@ -22,14 +22,14 @@ header {
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 1rem;
 }
 
 header nav {
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 16px;
+  gap: 1rem;
 }
 
 header nav a {
@@ -41,9 +41,9 @@ header nav a:nth-child(1) {
   color: #a40f0f;
   font-family: "Inter", sans-serif;
   font-weight: 700;
-  font-size: 14px;
-  line-height: 100%;
-  letter-spacing: 0%;
+  font-size: 0.875rem;
+  line-height: 1;
+  letter-spacing: 0;
 }
 
 header nav a:nth-child(2),
@@ -51,9 +51,9 @@ header nav a:nth-child(3) {
   color: black;
   font-family: "Inter", sans-serif;
   font-weight: 400;
-  font-size: 20px;
-  line-height: 100%;
-  letter-spacing: 0%;
+  font-size: 1.25rem;
+  line-height: 1;
+  letter-spacing: 0;
 }
 
 header nav a.router-link-active {
@@ -84,10 +84,10 @@ mat-drawer {
   position: fixed;
   top: 0;
   right: 0;
-  width: 250px;
+  width: 15.625rem;
   height: 100vh;
   background-color: #ffffff;
-  padding-top: 24px;
+  padding-top: 1.5rem;
   z-index: 1001;
   pointer-events: auto;
 }
@@ -100,7 +100,7 @@ mat-drawer nav {
   display: flex;
   flex-direction: column;
   height: 100%;
-  gap: 8px;
+  gap: 0.5rem;
   align-items: flex-end;
 }
 
@@ -114,16 +114,16 @@ mat-drawer nav a {
 }
 
 mat-drawer nav a:first-child {
-  padding-top: 30px;
-  padding-right: 16px;
+  padding-top: 1.875rem;
+  padding-right: 1rem;
 }
 
 mat-drawer nav a:nth-child(2) {
-  padding-right: 16px;
+  padding-right: 1rem;
 }
 
 mat-drawer nav a:nth-child(3) {
-  padding-right: 16px;
+  padding-right: 1rem;
 }
 
 mat-drawer nav a:last-child {
