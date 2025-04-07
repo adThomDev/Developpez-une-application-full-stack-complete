@@ -1,10 +1,11 @@
 package com.openclassrooms.mddapi.services;
 
+import com.openclassrooms.mddapi.mappers.UserMapper;
 import com.openclassrooms.mddapi.models.DTOs.UserDTO;
 import com.openclassrooms.mddapi.models.entities.Theme;
 import com.openclassrooms.mddapi.models.entities.UserEntity;
-import com.openclassrooms.mddapi.repositories.UserEntityRepository;
 import com.openclassrooms.mddapi.repositories.ThemeRepository;
+import com.openclassrooms.mddapi.repositories.UserEntityRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -13,48 +14,37 @@ import java.util.Optional;
 public class UserEntityService {
 
   private final UserEntityRepository userEntityRepository;
-
   private final ThemeRepository themeRepository;
 
   public UserEntityService(UserEntityRepository userEntityRepository, ThemeRepository themeRepository) {
     this.userEntityRepository = userEntityRepository;
     this.themeRepository = themeRepository;
   }
-//TODO dans mapper
+
   public Optional<UserDTO> findById(Long id) {
-    return userEntityRepository.findById(id).map(user -> {
-      UserDTO userDTO = new UserDTO();
-      userDTO.setId(user.getId());
-      userDTO.setUsername(user.getUsername());
-      userDTO.setEmail(user.getEmail());
-      userDTO.setPassword(user.getPassword());
-      return userDTO;
-    });
+    return userEntityRepository.findById(id)
+        .map(UserMapper::toDTO);
   }
 
-  public UserEntity saveUser(UserEntity userEntity) {
-    return userEntityRepository.save(userEntity);
+  public Optional<UserDTO> createUser(UserDTO userDTO) {
+    UserEntity userEntity = UserMapper.toEntity(userDTO);
+    UserEntity savedUser = userEntityRepository.save(userEntity);
+    return Optional.of(UserMapper.toDTO(savedUser));
   }
 
   public Optional<UserDTO> updateUser(Long id, UserDTO updatedUser) {
     return userEntityRepository.findById(id).map(existingUser -> {
-      if (updatedUser.getUsername() != null) {
+      if (!updatedUser.getUsername().isEmpty()) {
         existingUser.setUsername(updatedUser.getUsername());
       }
-      if (updatedUser.getEmail() != null) {
+      if (!updatedUser.getEmail().isEmpty()) {
         existingUser.setEmail(updatedUser.getEmail());
       }
-      if (updatedUser.getPassword() != null) {
+      if (!updatedUser.getPassword().isEmpty()) {
         existingUser.setPassword(updatedUser.getPassword());
       }
       userEntityRepository.save(existingUser);
-
-      UserDTO userDTO = new UserDTO();
-      userDTO.setId(existingUser.getId());
-      userDTO.setUsername(existingUser.getUsername());
-      userDTO.setEmail(existingUser.getEmail());
-      userDTO.setPassword(existingUser.getPassword());
-      return userDTO;
+      return UserMapper.toDTO(existingUser);
     });
   }
 
@@ -93,6 +83,4 @@ public class UserEntityService {
 
     return false;
   }
-
-
 }
