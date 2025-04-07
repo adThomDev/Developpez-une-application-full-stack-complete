@@ -9,6 +9,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.openclassrooms.mddapi.repositories.UserEntityRepository;
 
+import java.util.Optional;
+
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
   UserEntityRepository userEntityRepository;
@@ -19,12 +21,18 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
   @Override
   @Transactional
-  public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-    UserEntity userEntity = userEntityRepository.findByEmail(username)
-        .orElseThrow(() -> new UsernameNotFoundException("User Not Found with email: " + username));
+  public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {
+    Optional<UserEntity> userOpt = userEntityRepository.findByEmail(login);
 
-    return UserDetailsImpl
-        .builder()
+    if (userOpt.isEmpty()) {
+      userOpt = userEntityRepository.findByUsername(login);
+    }
+
+    UserEntity userEntity = userOpt.orElseThrow(
+        () -> new UsernameNotFoundException("User Not Found with login: " + login)
+    );
+
+    return UserDetailsImpl.builder()
         .id(userEntity.getId())
         .username(userEntity.getUsername())
         .email(userEntity.getEmail())

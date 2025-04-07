@@ -2,6 +2,7 @@ package com.openclassrooms.mddapi.controllers;
 
 import javax.validation.Valid;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -22,6 +23,8 @@ import com.openclassrooms.mddapi.payload.response.MessageResponse;
 import com.openclassrooms.mddapi.repositories.UserEntityRepository;
 import com.openclassrooms.mddapi.security.jwt.JwtUtils;
 import com.openclassrooms.mddapi.security.services.UserDetailsImpl;
+
+import java.util.Optional;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
@@ -44,9 +47,23 @@ public class AuthController {
 
   @PostMapping("/login")
   public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
+    String login = loginRequest.getLogin();
+    String password = loginRequest.getPassword();
+
+    Optional<UserEntity> userOpt = userEntityRepository.findByUsername(login);
+    if (userOpt.isEmpty()) {
+      userOpt = userEntityRepository.findByEmail(login);
+    }
+
+    if (userOpt.isEmpty()) {
+      return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid login");
+    }
+
+    String email = userOpt.get().getEmail();
 
     Authentication authentication = authenticationManager.authenticate(
-        new UsernamePasswordAuthenticationToken(loginRequest.getEmail(), loginRequest.getPassword()));
+        new UsernamePasswordAuthenticationToken(email, password)
+    );
 
     SecurityContextHolder.getContext().setAuthentication(authentication);
     String jwt = jwtUtils.generateJwtToken(authentication);
@@ -58,6 +75,7 @@ public class AuthController {
         userDetails.getEmail()
     ));
   }
+
 
   @PostMapping("/register")
   public ResponseEntity<?> registerUser(@Valid @RequestBody SignupRequest signUpRequest) {

@@ -1,10 +1,14 @@
 
 -- Users
-INSERT INTO User (id, username, email, password) VALUES
-(1, 'ocrUser1', 'ocruser1@aze.com', 'ocrMdp1'),
-(2, 'ocrUser2', 'ocruser2@aze.com', 'ocrMdp2'),
-(3, 'ocrUser3', 'ocruser3@aze.com', 'ocrMdp3'),
-(4, 'ocrUser4', 'ocruser4@aze.com', 'ocrMdp4');
+INSERT INTO Userentity (id, username, email, password) VALUES
+(1, 'ocrUser1', 'ocruser1@aze.com', '$2a$10$UfzbvQFybkiv1u7H3z3YCObzyYRKz2/5/wBZluTY.SKv6wJe0RWKK'),
+(2, 'ocrUser2', 'ocruser2@aze.com', '$2a$10$cn/ZUf0pepaHT0fL8Q0vr.SOtFPEiqnm9tQyAaJhxTnmagJgWu6de'),
+(3, 'ocrUser3', 'ocruser3@aze.com', '$2a$10$8sRWn.xy0fFewePeHikEweOKxWFnE9vaRDI.ytSxPKMIS9BV7znF6'),
+(4, 'ocrUser4', 'ocruser4@aze.com', '$2a$10$yV2wm6.YaXCg4DftPIiTNeUqHaLLwvC1pTi2s5kOinWYJgZqegOMy');
+-- (1, 'ocrUser1', 'ocruser1@aze.com', 'ocrMdp1'),
+-- (2, 'ocrUser2', 'ocruser2@aze.com', 'ocrMdp2'),
+-- (3, 'ocrUser3', 'ocruser3@aze.com', 'ocrMdp3'),
+-- (4, 'ocrUser4', 'ocruser4@aze.com', 'ocrMdp4');
 
 -- Themes
 INSERT INTO Theme (id, title, description) VALUES
