@@ -33,6 +33,12 @@
           autocomplete="username"
           required
         />
+        <mat-error *ngIf="form.get('username')?.hasError('minlength')">
+          Le nom d'utilisateur doit contenir au moins 6 caractères.
+        </mat-error>
+        <mat-error *ngIf="form.get('username')?.hasError('maxlength')">
+          Le nom d'utilisateur ne peut pas dépasser 50 caractères.
+        </mat-error>
       </mat-form-field>
     </div>
 
@@ -47,6 +53,12 @@
           autocomplete="email"
           required
         />
+        <mat-error *ngIf="form.get('email')?.hasError('email')">
+          L'email n'est pas valide.
+        </mat-error>
+        <mat-error *ngIf="form.get('username')?.hasError('maxlength')">
+          L'email ne peut pas dépasser 50 caractères.
+        </mat-error>
       </mat-form-field>
     </div>
 
@@ -61,6 +73,12 @@
           autocomplete="new-password"
           required
         />
+        <mat-error *ngIf="form.get('password')?.hasError('minlength')">
+          Le mot de passe doit contenir au moins 6 caractères.
+        </mat-error>
+        <mat-error *ngIf="form.get('username')?.hasError('maxlength')">
+          Le mot de passe ne peut pas dépasser 50 caractères.
+        </mat-error>
       </mat-form-field>
     </div>
 

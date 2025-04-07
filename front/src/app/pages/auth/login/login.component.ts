@@ -41,10 +41,10 @@ export class LoginComponent implements OnInit {
   public onError = false;
 
   public form = this.fb.group({
-    login: ['', [Validators.required, Validators.min(3), Validators.max(50)]],
+    login: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(50)]],
     password: [
       '',
-      [Validators.required, Validators.min(3), Validators.max(20)],
+      [Validators.required, Validators.minLength(6), Validators.maxLength(50)],
     ],
   });
 

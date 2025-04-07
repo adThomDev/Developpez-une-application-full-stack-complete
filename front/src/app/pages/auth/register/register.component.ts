@@ -33,14 +33,14 @@ export class RegisterComponent implements OnInit {
   public onError = false;
 
   public form = this.fb.group({
-    email: ['', [Validators.required, Validators.email]],
+    email: ['', [Validators.required, Validators.email, Validators.maxLength(50)]],
     username: [
       '',
-      [Validators.required, Validators.min(3), Validators.max(20)],
+      [Validators.required, Validators.minLength(6), Validators.maxLength(50)],
     ],
     password: [
       '',
-      [Validators.required, Validators.min(3), Validators.max(20)],
+      [Validators.required, Validators.minLength(6), Validators.maxLength(50)],
     ],
   });
 

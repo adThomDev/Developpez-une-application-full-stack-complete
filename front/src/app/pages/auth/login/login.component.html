@@ -32,6 +32,12 @@
           formControlName="login"
           required
         />
+        <mat-error *ngIf="form.get('password')?.hasError('minlength')">
+          Login invalide.
+        </mat-error>
+        <mat-error *ngIf="form.get('username')?.hasError('maxlength')">
+          Login invalide.
+        </mat-error>
       </mat-form-field>
     </div>
 
@@ -46,6 +52,12 @@
           autocomplete="current-password"
           required
         />
+        <mat-error *ngIf="form.get('password')?.hasError('minlength')">
+          Mot de passe invalide.
+        </mat-error>
+        <mat-error *ngIf="form.get('username')?.hasError('maxlength')">
+          Mot de passe invalide.
+        </mat-error>
       </mat-form-field>
     </div>
 
