@@ -19,15 +19,15 @@ public class UserEntity {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
-  @Size(max = 20)
+  @Size(min = 6, max = 50)
   @Column(nullable = false, unique = true)
   private String username;
 
-  @Size(max = 50)
+  @Size(min = 6, max = 50)
   @Column(nullable = false, unique = true)
   private String email;
 
-  @Size(max = 120)
+  @Size(min = 6, max = 50)
   @Column(nullable = false)
   private String password;
 
