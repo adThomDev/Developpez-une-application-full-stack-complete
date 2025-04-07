@@ -42,4 +42,5 @@ export class SessionService {
     }
     return this.sessionInformation;
   }
+  
 }

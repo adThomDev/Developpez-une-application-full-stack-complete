@@ -25,25 +25,52 @@
     <div class="label-on-top-of-form-field">
       <label for="username">Nom d'utilisateur</label>
       <mat-form-field appearance="outline">
-        <input matInput type="text" id="username" formControlName="username" autocomplete="username" required />
+        <input
+          matInput
+          type="text"
+          id="username"
+          formControlName="username"
+          autocomplete="username"
+          required
+        />
       </mat-form-field>
     </div>
 
     <div class="label-on-top-of-form-field">
       <label for="emailAddress">Adresse e-mail</label>
       <mat-form-field appearance="outline">
-        <input matInput type="email" id="email" formControlName="email" autocomplete="email" required />
+        <input
+          matInput
+          type="email"
+          id="email"
+          formControlName="email"
+          autocomplete="email"
+          required
+        />
       </mat-form-field>
     </div>
 
     <div class="label-on-top-of-form-field">
       <label for="mdp">Mot de passe</label>
       <mat-form-field appearance="outline">
-        <input matInput type="password" id="mdp" formControlName="password" autocomplete="new-password" required />
+        <input
+          matInput
+          type="password"
+          id="mdp"
+          formControlName="password"
+          autocomplete="new-password"
+          required
+        />
       </mat-form-field>
     </div>
 
-    <button mat-raised-button color="primary" class="register-button" type="submit" [disabled]="form.invalid">
+    <button
+      mat-raised-button
+      color="primary"
+      class="register-button"
+      type="submit"
+      [disabled]="form.invalid"
+    >
       S'inscrire
     </button>
     <span *ngIf="onError" class="error ml2">Une erreur est survenue</span>

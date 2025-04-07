@@ -40,9 +40,8 @@ export class LoginComponent implements OnInit {
   isSmartphone: boolean = false;
   public onError = false;
 
-  //TODO gérer "email ou username"
   public form = this.fb.group({
-    login: ['', [Validators.required]],
+    login: ['', [Validators.required, Validators.min(3), Validators.max(50)]],
     password: [
       '',
       [Validators.required, Validators.min(3), Validators.max(20)],
