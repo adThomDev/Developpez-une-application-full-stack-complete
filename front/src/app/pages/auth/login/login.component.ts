@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
 
   //TODO gérer "email ou username"
   public form = this.fb.group({
-    email: ['', [Validators.required, Validators.email]],
+    login: ['', [Validators.required]],
     password: [
       '',
       [Validators.required, Validators.min(3), Validators.max(20)],
