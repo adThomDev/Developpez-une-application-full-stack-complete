@@ -6,18 +6,7 @@ import { SessionService } from 'src/services/session.service';
 export class JwtInterceptor implements HttpInterceptor {
   constructor(private sessionService: SessionService) {}
 
-  // public intercept(request: HttpRequest<any>, next: HttpHandler) {
-  //   if (this.sessionService.isLogged) {
-  //     request = request.clone({
-  //       setHeaders: {
-  //         Authorization: `Bearer ${this.sessionService.sessionInformation!.token}`,
-  //       },
-  //     });
-  //   }
-  //   return next.handle(request);
-  // }
-
-  public intercept(request: HttpRequest<any>, next: HttpHandler) {
+  public intercept<T>(request: HttpRequest<T>, next: HttpHandler) {
     console.log('JwtInterceptor triggered for:', request.url);
   
     const token = this.sessionService.getToken();

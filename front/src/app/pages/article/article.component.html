@@ -3,21 +3,21 @@
     <button class="back-button" routerLink="/articles">
       <mat-icon>arrow_back</mat-icon>
     </button>
-    <h1>{{ article.title }}</h1>
+    <h1>{{ article?.title }}</h1>
   </div>
 
   <div class="article-meta">
-    <span>{{ article.date }}</span>
-    <span>{{ article.authorId }}</span>
-    <span>{{ article.themeId }}</span>
+    <span>{{ article?.createdAt }}</span>
+    <span>{{ article?.author }}</span>
+    <span>{{ article?.themeTitle }}</span>
   </div>
-  <p class="article-content">{{ article.content }}</p>
+  <p class="article-content">{{ article?.content }}</p>
 
   <hr />
 
   <h2>Commentaires</h2>
   <div class="comments-section">
-    <div *ngFor="let comment of article.commentaries" class="comment">
+    <div *ngFor="let comment of article?.commentaries" class="comment">
       <div class="comment-username">{{ comment.author }}</div>
       <div class="comment-content">{{ comment.content }}</div>
     </div>

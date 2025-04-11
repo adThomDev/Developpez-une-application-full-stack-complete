@@ -4,7 +4,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptor } from 'src/app/interceptors/jwt.interceptor';
 import { ThemeService } from 'src/services/themeService';
 import { UserService } from 'src/services/userService';
-import { Theme } from 'src/app/interfaces/interface';
+import { Theme, User } from 'src/app/interfaces/interface';
 
 @Component({
   selector: 'app-themes',
@@ -24,7 +24,7 @@ import { Theme } from 'src/app/interfaces/interface';
 })
 export class ThemesComponent implements OnInit {
   themes: Theme[] = [];
-  user: any = null;
+  user: User | null = null;
 
   constructor(
     private themeService: ThemeService,
@@ -42,14 +42,17 @@ export class ThemesComponent implements OnInit {
   }
 
   isSubscribed(themeId: number): boolean {
-    return this.user?.subscribedThemes.includes(themeId);
+    if (!this.user) {
+      return false;
+    }
+    return this.user.subscribedThemes.includes(themeId);
   }
 
   subscribe(themeId: number): void {
     this.userService.subscribeTheme(themeId).subscribe({
       next: () => {
         console.log(`Successfully subscribed to theme with ID: ${themeId}`);
-        this.user.subscribedThemes.push(themeId);
+        this.user?.subscribedThemes.push(themeId);
       },
       error: (err) => {
         console.error(`Error subscribing to theme with ID: ${themeId}`, err);

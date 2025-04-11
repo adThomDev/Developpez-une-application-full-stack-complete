@@ -10,7 +10,8 @@ import {
 import { MatIconModule } from '@angular/material/icon';
 import { ArticleService } from 'src/services/articleService';
 import { JwtInterceptor } from 'src/app/interceptors/jwt.interceptor';
-import { Article } from 'src/app/interfaces/interface';
+import { Article, Commentary } from 'src/app/interfaces/interface';
+import { DateUtilsService } from 'src/services/date-utils.service';
 
 @Component({
   selector: 'app-article',
@@ -34,23 +35,27 @@ import { Article } from 'src/app/interfaces/interface';
   styleUrls: ['./article.component.scss'],
 })
 export class ArticleComponent implements OnInit {
-  article: any = null;
-  comments: any[] = [];
+  article: Article | null = null;
+  comments: Commentary[] = [];
   newComment = '';
 
   constructor(
     private http: HttpClient,
     private route: ActivatedRoute,
-    private articleService: ArticleService
+    private articleService: ArticleService,
+    private dateUtilsService: DateUtilsService
   ) {}
 
   ngOnInit(): void {
     const articleId = Number(this.route.snapshot.paramMap.get('id'));
-
+  
     this.articleService.getArticleById(articleId).subscribe({
       next: (data) => {
-        this.article = data;
-        console.log('Fetched article:', this.article);
+        this.article = {
+          ...data,
+          createdAt: this.dateUtilsService.formatDate(data.createdAt),
+        };
+        console.log('Fetched article with formatted date:', this.article);
       },
       error: (err) => {
         console.error('Error fetching article:', err);

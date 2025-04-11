@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { BASE_URL } from 'src/app/constants/constants';
-import { Article } from 'src/app/interfaces/interface';
+import { Article, ArticleCreation, Commentary } from 'src/app/interfaces/interface';
 
 @Injectable({
   providedIn: 'root',
@@ -14,26 +14,22 @@ export class ArticleService {
 
   constructor(private http: HttpClient) {}
 
-  getArticles(): Observable<any[]> {
-    return this.http.get<any[]>(this.articlesUrl);
+  getArticles(): Observable<Article[]> {
+    return this.http.get<Article[]>(this.articlesUrl);
   }
 
-  getArticleById(id: number): Observable<any> {
+  getArticleById(id: number): Observable<Article> {
     const url = `${this.articlesUrl}/${id}`;
-    return this.http.get<any>(url);
+    return this.http.get<Article>(url);
   }
 
-  addCommentary(articleId: number, content: string): Observable<any> {
+  addCommentary(articleId: number, content: string): Observable<Commentary> {
     const url = `${this.articlesUrl}/${articleId}/commentary`;
-    return this.http.post<any>(url, { content });
+    return this.http.post<Commentary>(url, { content });
   }
 
-  createArticle(article: {
-    themeId: string;
-    title: string;
-    content: string;
-  }): Observable<any> {
+  createArticle(article: ArticleCreation): Observable<ArticleCreation> {
     const url = `${this.articlesUrl}`;
-    return this.http.post<any>(url, article);
+    return this.http.post<ArticleCreation>(url, article);
   }
 }

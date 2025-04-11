@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { BASE_URL } from 'src/app/constants/constants';
+import { Theme, User } from 'src/app/interfaces/interface';
 
 @Injectable({
   providedIn: 'root'
@@ -14,11 +15,11 @@ export class ThemeService {
 
   constructor(private http: HttpClient) {}
 
-  getThemes(): Observable<any[]> {
-    return this.http.get<any[]>(this.themesUrl);
+  getThemes(): Observable<Theme[]> {
+    return this.http.get<Theme[]>(this.themesUrl);
   }
 
-  getThemesByUserId(userId: number): Observable<any[]> {
-    return this.http.get<any[]>(this.themesUrlByUser + userId);
+  getThemesByUserId(userId: number): Observable<Theme[]> {
+    return this.http.get<Theme[]>(this.themesUrlByUser + userId);
   }
 }

@@ -8,6 +8,7 @@ import { ThemeService } from 'src/services/themeService';
 import { MatIconModule } from '@angular/material/icon';
 import { ArticleService } from 'src/services/articleService';
 import { JwtInterceptor } from 'src/app/interceptors/jwt.interceptor';
+import { Theme } from 'src/app/interfaces/interface';
 
 @Component({
   selector: 'app-article-creation',
@@ -26,7 +27,7 @@ import { JwtInterceptor } from 'src/app/interceptors/jwt.interceptor';
   styleUrls: ['./article-creation.component.scss'],
 })
 export class ArticleCreationComponent implements OnInit {
-  themes: any[] = [];
+  themes: Theme[] = [];
   article = {
     themeId: '',
     title: '',

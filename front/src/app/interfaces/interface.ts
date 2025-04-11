@@ -3,7 +3,9 @@ export interface Article {
   title: string;
   content: string;
   author: string;
-  createdAt: Date;
+  createdAt: string;
+  themeTitle: string;
+  commentaries: Commentary[];
 }
 
 export interface Theme {
@@ -12,11 +14,23 @@ export interface Theme {
   description: string;
 }
 
+export interface Commentary {
+  id: number;
+  content: string;
+  author: string;
+}
+
 export interface User {
   username: string;
   email: string;
   password?: string;
   subscribedThemes: number[];
+}
+
+export interface ArticleCreation {
+  themeId: string;
+  title: string;
+  content: string;
 }
 
 export interface SessionInformation {
