@@ -3,7 +3,6 @@ import { provideRouter } from '@angular/router';
 import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 
-//TODO : pour skip les tests, mettre un x devant "describe" (ou "it" pour les TU)
 xdescribe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
