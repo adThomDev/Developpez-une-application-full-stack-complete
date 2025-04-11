@@ -1,25 +1,98 @@
-# P6-Full-Stack-reseau-dev
+# Testez une application full stack, OpenClassrooms - projet n°5
 
-## Front
+## Table of Contents
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.1.3.
+* [Summary](#summary)
+* [Ressources](#ressources)
+    * [SQL script](#sql-script)
+    * [Postman collection](#postman-collection)
+* [Backend](#backend)
+    * [Backend technologies](#backend-technologies)
+    * [Setup the database](#setup-the-database)
+    * [Setup the backend API](#setup-the-backend-api)
+* [Frontend](#frontend)
+    * [Frontend technologies](#frontend-technologies)
+    * [Setup the frontend server](#setup-the-frontend-server)
 
-Don't forget to install your node_modules before starting (`npm install`).
+# Summary
 
-### Development server
+This project contains both the frontend and backend code for an app called MDD, which allows users to register and login
+to follow topics about IT, and comment on related articles.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+# Ressources
 
-### Build
+### SQL script
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+An SQL script to populate the database's tables is available at `back/docs/script.sql`
 
-### Where to start
+Among other entries, it'll generate domr users accounts, like :
 
-As you may have seen if you already started the app, a simple home page containing a logo, a title and a button is available. If you take a look at its code (in the `home.component.html`) you will see that an external UI library is already configured in the project.
+- login: ocruser1@aze.com
+- password: ocrMdp1*
 
-This library is `@angular/material`, it's one of the most famous in the angular ecosystem. As you can see on their docs (https://material.angular.io/), it contains a lot of highly customizable components that will help you design your interfaces quickly.
+### Postman collection
 
-Note: I recommend to use material however it's not mandatory, if you prefer you can get rid of it.
+For Postman import the collection
 
-Good luck!
+> back/docs/mddapi.postman_collection.json
+
+by following the documentation:
+
+https://learning.postman.com/docs/getting-started/importing-and-exporting-data/#importing-data-into-postman
+
+# Backend
+
+## Backend technologies
+
+This project was generated with [Java](https://www.java.com/en/) 17 and [Spring Boot](https://spring.io/) 3.4.4
+
+## Setup the database
+
+You can use e.g. [MySQL](https://www.mysql.com/fr/) to create a database (name it `ocrp6`, but you can modify that in
+the application.properties situated in `back/src/main/ressources`, as well as the credentials that are at the moment
+login `userocrp6` and password `mpocrp6`), and admin it with [phpMyAdmin](https://www.phpmyadmin.net/), both of which
+are available in the [XAMPP](https://www.apachefriends.org/fr/index.html) bundle.
+Once the database created, running the API will create the tables if you set `spring.jpa.hibernate.ddl-auto` to `create`
+in the application.properties file. After it's done you can populate these tables using the sql script found in
+`back/docs`.
+
+## Setup the backend API
+
+Clone the project :
+
+> git clone https://github.com/adThomDev/Developpez-une-application-full-stack-complete.git
+
+Go inside the back folder :
+
+> cd back
+
+Install dependencies :
+
+> mvn clean install
+
+Run the API :
+
+> mvn spring-boot:run
+
+# Frontend
+
+## Frontend technologies
+
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) 18.2.15.,
+uses [TypeScript](https://www.typescriptlang.org/) 5.4.5 and the UI library [Angular Material](https://material.angular.io/) 18.2.0.
+
+## Setup the frontend server
+
+Go inside the front folder :
+
+> cd front
+
+Install dependencies :
+
+> npm install
+
+Launch the frontend :
+
+> ng serve
+
+The app should then be available at `http://localhost:4200/`
