@@ -10,8 +10,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { RegisterRequest } from 'src/app/interfaces/interface';
 import { AuthService } from 'src/app/pages/auth/auth.service';
-import { SessionInformation } from 'src/app/interfaces/interface';
-import { SessionService } from 'src/services/session.service';
 
 @Component({
   selector: 'app-register',
@@ -33,14 +31,21 @@ export class RegisterComponent implements OnInit {
   public onError = false;
 
   public form = this.fb.group({
-    email: ['', [Validators.required, Validators.email, Validators.maxLength(50)]],
+    email: [
+      '',
+      [Validators.required, Validators.email, Validators.maxLength(50)],
+    ],
     username: [
       '',
       [Validators.required, Validators.minLength(6), Validators.maxLength(50)],
     ],
     password: [
       '',
-      [Validators.required, Validators.minLength(6), Validators.maxLength(50)],
+      [
+        Validators.required,
+        Validators.minLength(8),
+        this.authService.passwordStrengthValidator,
+      ],
     ],
   });
 
@@ -48,7 +53,6 @@ export class RegisterComponent implements OnInit {
     private breakpointObserver: BreakpointObserver,
     private fb: FormBuilder,
     private authService: AuthService,
-    private sessionService: SessionService,
     private router: Router
   ) {}
 

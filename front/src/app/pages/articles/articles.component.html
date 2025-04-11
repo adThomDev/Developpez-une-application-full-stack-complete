@@ -1,7 +1,14 @@
 <div class="articles-container">
-  <button class="create-article-button" (click)="createArticle()">
-    Créer un article
-  </button>
+  <div class="actions">
+    <button class="create-article-button" (click)="createArticle()">
+      Créer un article
+    </button>
+    <button class="toggle-sort-button" (click)="toggleSortOrder()">
+      Trier par
+      <mat-icon *ngIf="isDescending">arrow_downward</mat-icon>
+      <mat-icon *ngIf="!isDescending">arrow_upward</mat-icon>
+    </button>
+  </div>
 
   <div class="articles-grid">
     <div *ngFor="let article of articles" class="article-card">

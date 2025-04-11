@@ -7,6 +7,12 @@
   gap: 1.25rem;
 }
 
+.actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .create-article-button {
   align-self: flex-start;
   padding: 0.625rem 1rem;
@@ -22,6 +28,24 @@
 
 .create-article-button:hover {
   background-color: #5949b8;
+}
+
+.toggle-sort-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 100%;
+  letter-spacing: 0%;
+}
+
+.toggle-sort-button mat-icon {
+  font-size: 25px;
 }
 
 .articles-grid {

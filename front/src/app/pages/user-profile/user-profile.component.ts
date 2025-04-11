@@ -10,6 +10,7 @@ import { JwtInterceptor } from 'src/app/interceptors/jwt.interceptor';
 import { UserService } from 'src/services/userService';
 import { ThemeService } from 'src/services/themeService';
 import { SessionService } from 'src/services/session.service';
+import { AuthService } from 'src/app/pages/auth/auth.service';
 import { User, Theme } from 'src/app/interfaces/interface';
 
 @Component({
@@ -39,7 +40,10 @@ export class UserProfileComponent implements OnInit {
   public form = this.fb.group({
     username: ['', [Validators.minLength(6), Validators.maxLength(50)]],
     email: ['', [Validators.email, Validators.maxLength(50)]],
-    password: ['', [Validators.minLength(6), Validators.maxLength(50)]],
+    password: [
+      '',
+      [Validators.minLength(8), this.authService.passwordStrengthValidator],
+    ],
   });
 
   user: User = {
@@ -55,6 +59,7 @@ export class UserProfileComponent implements OnInit {
     private userService: UserService,
     private themeService: ThemeService,
     private sessionService: SessionService,
+    private authService: AuthService,
     private router: Router
   ) {}
 
@@ -85,7 +90,10 @@ export class UserProfileComponent implements OnInit {
     }
 
     const updatedUser: Partial<User> = Object.fromEntries(
-      Object.entries(this.form.value).map(([key, value]) => [key, value ?? undefined])
+      Object.entries(this.form.value).map(([key, value]) => [
+        key,
+        value ?? undefined,
+      ])
     );
 
     this.userService.saveUserProfile(updatedUser).subscribe({
@@ -94,7 +102,9 @@ export class UserProfileComponent implements OnInit {
         alert('Profil sauvegardé avec succès.');
 
         this.sessionService.logOut();
-        alert('Vos informations ont été mises à jour. Veuillez vous reconnecter.');
+        alert(
+          'Vos informations ont été mises à jour. Veuillez vous reconnecter.'
+        );
         this.router.navigate(['/login']);
       },
       error: (err) => {
@@ -124,7 +134,10 @@ export class UserProfileComponent implements OnInit {
         });
       },
       error: (err) => {
-        console.error(`Error unsubscribing from theme with ID: ${themeId}`, err);
+        console.error(
+          `Error unsubscribing from theme with ID: ${themeId}`,
+          err
+        );
       },
     });
   }

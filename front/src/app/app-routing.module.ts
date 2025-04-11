@@ -39,18 +39,6 @@ export const routes: Routes = [
   },
   { path: '**', redirectTo: '' },
 ];
-//TODO : clean
-// export const routes: Routes = [
-//   { path: '', component: LandingPageComponent },
-//   { path: 'login', component: LoginComponent },
-//   { path: 'register', component: RegisterComponent },
-//   { path: 'articles', component: ArticlesComponent },
-//   { path: 'themes', component: ThemesComponent },
-//   { path: 'profile', component: UserProfileComponent },
-//   { path: 'create-article', component: ArticleCreationComponent },
-//   { path: 'article/:id', component: ArticleComponent },
-//   { path: '**', redirectTo: '' },
-// ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

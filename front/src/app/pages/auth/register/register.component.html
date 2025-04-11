@@ -34,10 +34,10 @@
           required
         />
         <mat-error *ngIf="form.get('username')?.hasError('minlength')">
-          Le nom d'utilisateur doit contenir au moins 6 caractères.
+          6 caractères minimum
         </mat-error>
         <mat-error *ngIf="form.get('username')?.hasError('maxlength')">
-          Le nom d'utilisateur ne peut pas dépasser 50 caractères.
+          50 caractères maximum
         </mat-error>
       </mat-form-field>
     </div>
@@ -54,10 +54,10 @@
           required
         />
         <mat-error *ngIf="form.get('email')?.hasError('email')">
-          L'email n'est pas valide.
+          email invalide
         </mat-error>
         <mat-error *ngIf="form.get('username')?.hasError('maxlength')">
-          L'email ne peut pas dépasser 50 caractères.
+          50 caractères maximum
         </mat-error>
       </mat-form-field>
     </div>
@@ -74,10 +74,10 @@
           required
         />
         <mat-error *ngIf="form.get('password')?.hasError('minlength')">
-          Le mot de passe doit contenir au moins 6 caractères.
+          8 caractères minimum
         </mat-error>
-        <mat-error *ngIf="form.get('username')?.hasError('maxlength')">
-          Le mot de passe ne peut pas dépasser 50 caractères.
+        <mat-error *ngIf="form.get('password')?.hasError('passwordStrength')">
+          mini : 1 min, 1 MAJ, 1 chiffre, 1 car. spé.
         </mat-error>
       </mat-form-field>
     </div>
