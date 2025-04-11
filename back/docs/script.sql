@@ -41,24 +41,25 @@ INSERT INTO Article (id, title, content, created_at, user_id, theme_id) VALUES
 
 
 -- Commentaries
-INSERT INTO Commentary (id, content, user_id, article_id) VALUES
-(1, 'Lorem ipsum dolor sit amet.', 1, 1),
-(2, 'Consectetur adipiscing elit.', 2, 1),
-(3, 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 3, 2),
-(4, 'Ut enim ad minim veniam.', 1, 2),
-(5, 'Duis aute irure dolor in reprehenderit.', 2, 3),
-(6, 'Excepteur sint occaecat cupidatat non proident.', 3, 3),
-(7, 'Sunt in culpa qui officia deserunt mollit anim id est laborum.', 1, 4),
-(8, 'Curabitur pretium tincidunt lacus.', 2, 4),
-(9, 'Nunc ullamcorper, justo eget pulvinar semper.', 3, 5),
-(10, 'Aenean nonummy hendrerit mauris.', 1, 5),
-(11, 'Phasellus porta. Fusce suscipit varius mi.', 2, 6),
-(12, 'Etiam in sem quam. Nulla fermentum.', 3, 6),
-(13, 'Curabitur massa. Donec eleifend.', 1, 7),
-(14, 'Maecenas ligula. Nulla interdum.', 2, 7),
-(15, 'Mauris est. Etiam non diam.', 3, 8),
-(16, 'Duis facilisis arcu eu massa.', 1, 8),
-(17, 'Vestibulum varius. Cras tempus.', 2, 9),
-(18, 'Nam facilisis sollicitudin odio.', 3, 9),
-(19, 'Fusce ac magna. Quisque massa.', 1, 10),
-(20, 'Vivamus vulputate libero a auctor.', 2, 10);
+INSERT INTO Commentary (id, content, created_at, user_id, article_id) VALUES
+(1, 'Lorem ipsum dolor sit amet.', '2025-02-01 12:00:00', 1, 1),
+(2, 'Consectetur adipiscing elit.', '2025-02-02 12:00:00', 2, 1),
+(3, 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', '2025-02-03 12:00:00', 3, 2),
+(4, 'Ut enim ad minim veniam.', '2025-02-04 12:00:00', 1, 2),
+(5, 'Duis aute irure dolor in reprehenderit.', '2025-02-05 12:00:00', 2, 3),
+(6, 'Excepteur sint occaecat cupidatat non proident.', '2025-02-06 12:00:00', 3, 3),
+(7, 'Sunt in culpa qui officia deserunt mollit anim id est laborum.', '2025-02-07 12:00:00', 1, 4),
+(8, 'Curabitur pretium tincidunt lacus.', '2025-02-08 12:00:00', 2, 4),
+(9, 'Nunc ullamcorper, justo eget pulvinar semper.', '2025-02-09 12:00:00', 3, 5),
+(10, 'Aenean nonummy hendrerit mauris.', '2025-02-10 12:00:00', 1, 5),
+(11, 'Phasellus porta. Fusce suscipit varius mi.', '2025-02-11 12:00:00', 2, 6),
+(12, 'Etiam in sem quam. Nulla fermentum.', '2025-02-12 12:00:00', 3, 6),
+(13, 'Curabitur massa. Donec eleifend.', '2025-02-13 12:00:00', 1, 7),
+(14, 'Maecenas ligula. Nulla interdum.', '2025-02-14 12:00:00', 2, 7),
+(15, 'Mauris est. Etiam non diam.', '2025-02-15 12:00:00', 3, 8),
+(16, 'Duis facilisis arcu eu massa.', '2025-02-16 12:00:00', 1, 8),
+(17, 'Vestibulum varius. Cras tempus.', '2025-02-17 12:00:00', 2, 9),
+(18, 'Nam facilisis sollicitudin odio.', '2025-02-18 12:00:00', 3, 9),
+(19, 'Fusce ac magna. Quisque massa.', '2025-02-19 12:00:00', 1, 10),
+(20, 'Vivamus vulputate libero a auctor.', '2025-02-20 12:00:00', 2, 10);
+

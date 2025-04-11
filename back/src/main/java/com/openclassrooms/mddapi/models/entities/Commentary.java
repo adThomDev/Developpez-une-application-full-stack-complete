@@ -4,6 +4,9 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
+import org.springframework.data.annotation.CreatedDate;
+
+import java.util.Date;
 
 @Entity
 @Data
@@ -17,6 +20,10 @@ public class Commentary {
 
   @Column(nullable = false)
   private String content;
+
+  @CreatedDate
+  @Column(name = "created_at", updatable = false)
+  private Date createdAt;
 
   @ManyToOne
   @JoinColumn(name = "user_id", nullable = false)
