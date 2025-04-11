@@ -28,8 +28,7 @@ public class UserEntityService {
   }
 
   public Optional<UserDTO> findById(Long id) {
-    return userEntityRepository.findById(id)
-        .map(UserMapper::toDTO);
+    return userEntityRepository.findById(id).map(UserMapper::toDTO);
   }
 
   public Optional<UserDTO> createUser(UserDTO userDTO) {
@@ -54,12 +53,10 @@ public class UserEntityService {
       if (!existingUser.getEmail().equals(userEmailFromToken)) {
         throw new SecurityException("You can only update your own account.");
       }
-      if (!updatedUser.getUsername().isEmpty() && !existingUser.getUsername().equals(updatedUser.getUsername())
-          && userEntityRepository.existsByUsername(updatedUser.getUsername())) {
+      if (!updatedUser.getUsername().isEmpty() && !existingUser.getUsername().equals(updatedUser.getUsername()) && userEntityRepository.existsByUsername(updatedUser.getUsername())) {
         throw new IllegalArgumentException("Username is already taken.");
       }
-      if (!updatedUser.getEmail().isEmpty() && !existingUser.getEmail().equals(updatedUser.getEmail())
-          && userEntityRepository.existsByEmail(updatedUser.getEmail())) {
+      if (!updatedUser.getEmail().isEmpty() && !existingUser.getEmail().equals(updatedUser.getEmail()) && userEntityRepository.existsByEmail(updatedUser.getEmail())) {
         throw new IllegalArgumentException("Email is already taken.");
       }
 
