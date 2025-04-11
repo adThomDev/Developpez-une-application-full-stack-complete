@@ -16,7 +16,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\n    \"email\": \"yoga@studio.com\",\n    \"password\": \"test!1234\"\n}",
+              "raw": "{\n    \"login\": \"ocruser1@aze.com\",\n    \"password\": \"ocrMdp1\"\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -341,6 +341,16 @@
         {
           "name": "Create an Article",
           "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "",
+                  "type": "string"
+                }
+              ]
+            },
             "method": "POST",
             "header": [],
             "body": {

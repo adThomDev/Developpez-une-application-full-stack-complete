@@ -49,7 +49,7 @@ public class ArticleService {
     String token = authHeader.replace("Bearer ", "");
     if (!jwtUtils.validateJwtToken(token)) return false;
 
-    String userEmail = jwtUtils.getUserNameFromJwtToken(token);
+    String userEmail = jwtUtils.getUserEmailFromJwtToken(token);
     Optional<UserEntity> userOpt = userRepository.findByEmail(userEmail);
     Optional<Article> articleOpt = articleRepository.findById(articleId);
 
@@ -68,7 +68,7 @@ public class ArticleService {
     String token = authHeader.replace("Bearer ", "");
     if (!jwtUtils.validateJwtToken(token)) return false;
 
-    String userEmail = jwtUtils.getUserNameFromJwtToken(token);
+    String userEmail = jwtUtils.getUserEmailFromJwtToken(token);
     Optional<UserEntity> userOpt = userRepository.findByEmail(userEmail);
     Optional<Theme> themeOpt = themeRepository.findById(request.getThemeId());
 

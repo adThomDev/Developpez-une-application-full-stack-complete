@@ -1,14 +1,14 @@
 
 -- Users
 INSERT INTO Userentity (id, username, email, password) VALUES
-(1, 'ocrUser1', 'ocruser1@aze.com', '$2a$10$UfzbvQFybkiv1u7H3z3YCObzyYRKz2/5/wBZluTY.SKv6wJe0RWKK'),
-(2, 'ocrUser2', 'ocruser2@aze.com', '$2a$10$cn/ZUf0pepaHT0fL8Q0vr.SOtFPEiqnm9tQyAaJhxTnmagJgWu6de'),
-(3, 'ocrUser3', 'ocruser3@aze.com', '$2a$10$8sRWn.xy0fFewePeHikEweOKxWFnE9vaRDI.ytSxPKMIS9BV7znF6'),
-(4, 'ocrUser4', 'ocruser4@aze.com', '$2a$10$yV2wm6.YaXCg4DftPIiTNeUqHaLLwvC1pTi2s5kOinWYJgZqegOMy');
--- (1, 'ocrUser1', 'ocruser1@aze.com', 'ocrMdp1'),
--- (2, 'ocrUser2', 'ocruser2@aze.com', 'ocrMdp2'),
--- (3, 'ocrUser3', 'ocruser3@aze.com', 'ocrMdp3'),
--- (4, 'ocrUser4', 'ocruser4@aze.com', 'ocrMdp4');
+(1, 'ocrUser1', 'ocruser1@aze.com', '$2a$10$AxtbFQJCu0byMt2idX8O0unQOrepUOhG683gj.hD0xPsisXJl2QOa'),
+(2, 'ocrUser2', 'ocruser2@aze.com', '$2a$10$vNSooTf/Xntp2Boo.IvITe9DCuu5wnl9hE7J3s92drlWyEuge9bzm'),
+(3, 'ocrUser3', 'ocruser3@aze.com', '$2a$10$KXZsxq/FPO3D9bNDNxi31OAuyerc2GXH2rw.aTHq7qkghjkEj3gTa'),
+(4, 'ocrUser4', 'ocruser4@aze.com', '$2a$10$aQAQXFQbLFdDuU3.AdjLAuiFEyWYAndoYKt1ezPeYSrJQbqRYQA6i');
+-- (1, 'ocrUser1', 'ocruser1@aze.com', 'ocrMdp1*'),
+-- (2, 'ocrUser2', 'ocruser2@aze.com', 'ocrMdp2*'),
+-- (3, 'ocrUser3', 'ocruser3@aze.com', 'ocrMdp3*'),
+-- (4, 'ocrUser4', 'ocruser4@aze.com', 'ocrMdp4*');
 
 -- Themes
 INSERT INTO Theme (id, title, description) VALUES

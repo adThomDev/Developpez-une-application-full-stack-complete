@@ -11,7 +11,8 @@ public class UserMapper {
     userDTO.setId(userEntity.getId());
     userDTO.setUsername(userEntity.getUsername());
     userDTO.setEmail(userEntity.getEmail());
-    userDTO.setPassword(userEntity.getPassword());
+    //TODO
+//    userDTO.setPassword(userEntity.getPassword());
 
     if (userEntity.getThemes() != null) {
       Number[] subscribedThemes = userEntity.getThemes().stream()
@@ -29,6 +30,7 @@ public class UserMapper {
     userEntity.setUsername(userDTO.getUsername());
     userEntity.setEmail(userDTO.getEmail());
     userEntity.setPassword(userDTO.getPassword());
+
     return userEntity;
   }
 }
