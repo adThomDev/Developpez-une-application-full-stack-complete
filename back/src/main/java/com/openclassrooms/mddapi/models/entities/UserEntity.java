@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
 
 import java.util.*;
-import java.util.concurrent.ConcurrentHashMap;
 
 @Entity
 @Data

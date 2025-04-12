@@ -11,12 +11,8 @@ import java.util.List;
 @Repository
 public interface ArticleRepository extends JpaRepository<Article, Long> {
 
-//  List<Article> findByUserId(Long userId);
-//
-//  List<Article> findByThemeId(Long themeId);
-
-  //TODO adapter la logique dans les services/controllers
   List<Article> findByUserEntity(UserEntity userEntity);
+
   List<Article> findByTheme(Theme theme);
 
 }
