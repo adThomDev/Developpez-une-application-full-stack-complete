@@ -1,0 +1,40 @@
+@startuml
+
+class Article {
+    -id : Long
+    -title : String
+    -createdAt : Date
+    -User : User
+    -Theme : Theme
+    -List<Commentary> : List<Commentary>
+}
+
+class User {
+    -id : Long
+    -username : String
+    -email : String
+    -password : String
+    -List<Theme> : List<Theme>
+}
+
+class Commentary {
+    -id : Long
+    -content : String
+    -User : User
+'    -Article : Article
+}
+
+class Theme {
+    -id : Long
+    -title : String
+    -description : String
+    -List<Article> : List<Article>
+}
+
+'Relationships
+Article }o--|| User
+Article }o--|| Theme
+Article ||--o{ Commentary
+User ||--o{ Theme
+User ||--o{ Commentary
+@enduml
