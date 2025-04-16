@@ -16,8 +16,7 @@
 
 # Summary
 
-This project contains both the frontend and backend code for an app called MDD, which allows users to register and login
-to follow topics about IT, and comment on related articles.
+This project contains both the frontend and backend code for a Minimum Viable Product version of an app called MDD, which allows users to register and login in order to follow topics about IT, and comment on related articles.
 
 # Ressources
 
@@ -25,7 +24,7 @@ to follow topics about IT, and comment on related articles.
 
 An SQL script to populate the database's tables is available at `back/docs/script.sql`
 
-Among other entries, it'll generate domr users accounts, like :
+Among other entries, it'll generate some user accounts, like :
 
 - login: ocruser1@aze.com
 - password: ocrMdp1*
